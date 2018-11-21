@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+</head>
+<body>
+
+    <h2>No of Users Registered:{{ no_of_users }}</h2><br>
+
+    <h3>No of jobs posted:{{ no_of_jobs }}</h3>
+
+    <div style="height=500px;width=30%" align="center"></div>
+
+    <a href="{% url 'Portal:logout' %}"><input type="button" value="Logout"></a><br>
+
+</body>
+</html>

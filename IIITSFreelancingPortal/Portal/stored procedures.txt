@@ -1,0 +1,10 @@
+DELIMITER //
+CREATE PROCEDURE applicable_jobs(IN uid INT)
+BEGIN
+IF uid=0 THEN
+    SELECT * FROM Portal_task as t where t.project_id IN (SELECT p.id FROM Portal_project as p where p.isCompleted=0) and t.isCompleted=0 and t.id NOT IN (SELECT c.task_id FROM Portal_contributor as c) ;
+ELSE
+    SELECT * FROM Portal_task as t where t.project_id IN (SELECT p.id FROM Portal_project as p where p.leader_id<>uid and p.isCompleted=0) and t.isCompleted=0 and t.id NOT IN (SELECT c.task_id FROM Portal_contributor as c) ;
+END IF;
+END//
+DELIMITER ;

@@ -1,0 +1,732 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html data-wf-page="588650ddefcbe214061d3bfe" data-wf-site="5862ff0a48ddaea33e96e0ef">
+
+
+<head>
+	<meta charset="utf-8" />
+	<title>Jobs</title>
+	<meta content="width=device-width, initial-scale=1" name="viewport" />
+	<meta content="Webflow" name="generator" />
+
+	<link href="/static/ase.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="/static/bellstyle.css">
+	<link rel="stylesheet" href="/static/profilestyle.css">
+	<link rel="stylesheet" href="/static/extnav.css">
+	<link rel="javascript" href="/static/extnavjs.js">
+
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" type="text/javascript" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+ crossorigin="anonymous"></script>
+<script src="https://daks2k3a4ib2z.cloudfront.net/5862ff0a48ddaea33e96e0ef/js/webflow.299fdfef2.js" type="text/javascript"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script type="text/javascript">
+		WebFont.load({ google: { families: ["Open Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic", "Montserrat:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic"] } });
+	</script>
+
+	<script type="text/javascript">
+		!function (o, c) {
+			var n = c.documentElement, t = " w-mod-"; n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch")
+		}(window, document);
+	</script>
+
+
+
+	<link href="https://daks2k3a4ib2z.cloudfront.net/5862ff0a48ddaea33e96e0ef/587523ed5b6467f56000d039_32x32.png" rel="shortcut icon"
+	 type="image/x-icon" />
+	<link href="https://daks2k3a4ib2z.cloudfront.net/5862ff0a48ddaea33e96e0ef/587523f2dd54b69e5863657e_256x256.png" rel="apple-touch-icon"
+	/>
+
+
+	<style>
+
+		.w-icon-nav-menu:before {
+			content: ""
+		}
+
+		@media only screen and (max-width: 1260px) {
+			#freekohide {
+				display: none;
+			}
+		}
+
+		@media only screen and (max-width: 767px) {
+			.pta {
+				display: none;
+			}
+		}
+
+
+		#info .bg {
+			fill: transparent;
+		}
+
+		#info .st0 {
+			fill: none;
+			stroke: green;
+			stroke-width: 6;
+			stroke-miterlimit: 10;
+		}
+
+		#info .st1 {
+			fill: green;
+		}
+
+		#info .st2 {
+			fill: green;
+			stroke: green;
+			stroke-width: 6;
+			stroke-miterlimit: 10;
+		}
+
+		/*Lock*/
+
+		#lock #bg {
+			fill: transparent
+		}
+
+		#lock .st0,
+		#lock .circle,
+		#lock .ellipse {
+			fill: none;
+			stroke: #DC3D51;
+			;
+			stroke-width: 2;
+			stroke-miterlimit: 10;
+		}
+
+		#lock .st0 {
+			-moz-transform: scale(1, 1);
+			-ms-transform: scale(1, 1);
+			-webkit-transform: scale(1, 1);
+			transform: scale(1, 1);
+
+			-moz-transform-origin: 50% 50%;
+			-ms-transform-origin: 50% 50%;
+			-webkit-transform-origin: 50% 50%;
+			transform: 50% 50%;
+			transition: 0.5s;
+		}
+
+		#lock:hover .st0 {
+			-moz-transform: scale(-1, 1);
+			-ms-transform: scale(-1, 1);
+			-webkit-transform: scale(-1, 1);
+			transform: scale(-1, 1);
+		}
+
+		#lock .st1 {
+			fill: none;
+			stroke: #DC3D51;
+			;
+			stroke-width: 4;
+			stroke-miterlimit: 10;
+		}
+
+		#lock .st2 {
+			fill: none;
+			stroke: #DC3D51;
+			;
+			stroke-width: 4;
+			stroke-miterlimit: 10;
+			stroke-dasharray: 41;
+			transition: 0.5s;
+		}
+
+		#lock:hover .st2 {
+			stroke-dasharray: 31;
+		}
+
+
+		.nav-menu {
+			display: -webkit-box;
+			display: -webkit-flex;
+			display: -ms-flexbox;
+			display: flex;
+			height: 80px;
+			-webkit-box-align: stretch;
+			-webkit-align-items: stretch;
+			-ms-flex-align: stretch;
+			align-items: stretch;
+		}
+
+
+		html,body{
+		background-color: #f8f8f8;
+		}
+
+		.ou {
+
+			height: 70%;
+			display: flex;
+			padding: 10px;
+			margin: 20px;
+			padding-right: 10px;
+
+		}
+
+		.ouleft {
+			width: 67%;
+			height: 100%;
+			overflow: hidden;
+			padding: 12px 20px;
+			float: left;
+		}
+
+		.mid {
+			width: 10%;
+		}
+
+		.ouright {
+			vertical-align: center;
+			width: 33%;
+			padding-left: 15px;
+		}
+
+		.projectContainer {
+			height: auto;
+			max-height: 100vh;
+			overflow-y: scroll;
+			padding: 12px;
+			padding-top: 12px;
+			padding-bottom: 12px;
+			padding-right: 30px;
+			border-style: solid;
+			border-width: 0px;
+			border-color: #E8E8E8;
+		}
+
+		
+
+		.proin{
+			display:flex;
+			padding: 12px 20px;
+			margin: 10px;
+			cellpadding: 30px;
+			font-size: 20px;
+			font-weight:normal;
+			width: 100%;
+			border-style: solid;
+			border-width: 2px;
+			border-color: white;
+			border-radius: .3em;
+			font-family: Montserrat,sans-serif;
+			-webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+			background-color: white !important;
+		}
+		
+	.proin:hover {
+	  box-shadow: 16px 16px 35px -7px rgba(0, 0, 0, .3);
+	  -webkit-transform: translate(0px, -5px);
+	  -ms-transform: translate(0px, -5px);
+	 }
+
+		.inone {
+			width: 90%
+		}
+
+		.intwo {
+			width: 10vw;
+		}
+
+		input[type=submit] {
+			padding: 5px 15px;
+			background: #e5e5e5;
+			font-weight: normal;
+			font-family: Montserrat, sans-serif;
+			color: #213875;
+			border: 0 none;
+			cursor: pointer;
+			-webkit-border-radius: 5px;
+			border-radius: 5px;
+		}
+
+		.inpt {
+			position: relative;
+			top: 40%;
+		}
+
+		.usar {
+			text-align: center;
+			border-style: solid;
+			border-width: 0px;
+			border-color: white;
+			padding: 10px;
+			border-spacing: 10px;
+		}
+
+		
+		
+		#appimg:hover > #lowa{
+			  -webkit-transform: scale(1.1);
+			  -ms-transform: scale(1.1);
+			  transform: scale(1.1);
+		}
+
+		#lowa{
+			-webkit-transition: -webkit-transform 500ms ease;
+			  transition: -webkit-transform 500ms ease;
+			  transition: transform 500ms ease;
+			  transition: transform 500ms ease, -webkit-transform 500ms ease;
+		}
+
+		.checked {
+			color: #daa520;
+		}
+
+		.situation {
+			border-style: solid;
+			border-width: 2px;
+			border-color: #f8f8f8;
+			padding: 10px;
+		}
+
+		.currentWorkingStatus {
+			background-color: white !important;
+			border-style: solid;
+			border-width: 0px;
+			border-color: #E8E8E8;
+			margin: 5px;
+			padding: 0px;
+		}
+
+		.skill-bar1 {
+			width: 90%;
+			height: 15px;
+			float: left;
+			padding: 0px;
+			border-radius: 5px;
+			margin: 6px 0 12px 0;
+			border: 2px solid #213875;
+		}
+
+		.skill-bar1 span {
+			background: #213875;
+			height: 12px;
+			border-radius: 5px;
+			display: inline-block;
+		}
+
+		.skill-bar1 span {
+			animation: w1 1s ease forwards;
+		}
+
+		@keyframes w1 {
+			from {
+				width: 0%;
+			}
+			to {
+				width: 40%;
+			}
+		}
+
+		.skill-bar2 {
+			width: 90%;
+			height: 15px;
+			float: left;
+			padding: 0px;
+			border-radius: 5px;
+			margin: 6px 0 12px 0;
+			border: 2px solid #27A5EB;
+		}
+
+		.skill-bar2 span {
+			background: #27A5EB;
+			height: 12px;
+			border-radius: 5px;
+			display: inline-block;
+		}
+
+		.skill-bar2 span {
+			animation: w2 1s ease forwards;
+		}
+
+		@keyframes w2 {
+			from {
+				width: 0%;
+			}
+			to {
+				width: 60%;
+			}
+		}
+
+		#myInput {
+			border-box: box-sizing;
+			background-image: url('http://icons.iconarchive.com/icons/icons8/ios7/24/Very-Basic-Search-icon.png');
+			background-position: 14px 12px;
+			background-repeat: no-repeat;
+			font-size: 16px;
+			padding: 14px 20px 12px 45px;
+			width: 190px;
+			border: none;
+			border-bottom: 1px solid #ddd;
+		}
+
+		#myInput:focus {
+			outline: 3px solid #ddd;
+		}
+
+		.dropdown-content {
+			display: none;
+			padding-bottom: 1px;
+			padding-top: 1px;
+			position: absolute;
+			color: #DC3D51;
+			background-color: black;
+			max-width: 200px;
+			overflow-y: auto;
+			max-height: 400px;
+			border: 1px solid #ddd;
+			z-index: 1;
+		}
+
+		.dropdown-content a {
+			color: #DC3D51;
+			padding: 1px;
+			text-decoration: none;
+			display: block;
+		}
+
+
+		.show {
+			display: block;
+		}
+
+		.styled-select select {
+   background: #213875;
+   color: white;
+   width: 268px;
+   padding: 5px;
+   font-size: 16px;
+   line-height: 1;
+   border: 0;
+   border-radius: 0;
+   height: 34px;
+   -webkit-appearance: none;
+   }
+
+   .styled-select {
+   width: 268px;
+   height: 34px;
+   overflow: hidden;
+   background: url(new_arrow.png) no-repeat right #ddd;
+   border: 1px solid #ccc;
+   }
+
+   .protag{
+
+			padding: 0px 15px;
+            background: #e5e5e5;
+            display: inline-block;
+            font-weight: normal;
+            font-family: Montserrat, sans-serif;
+            font-color: #213875;
+            border: 0 none;
+            cursor: pointer;
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+		}
+
+
+	</style>
+
+
+</head>
+
+
+
+<body data-ix="full-opacity-on-load" class="body">
+	<div data-collapse="medium" data-animation="default" data-duration="400" class="navbar w-nav">
+		<div class="book">
+			<img src="http://uploads.webflow.com/5862ff0a48ddaea33e96e0ef/58630dd822584dd00564dd47_Book.png" data-ix="book" />
+		</div>
+		<div data-ix="cactus" class="cactus" style="width:220px;height:220px;"></div>
+		<div class="content-wrapper w-container" style="display: flex;">
+
+			<div>
+				<a href="{% url 'Portal:home' %}" class="brand w-nav-brand">
+						<img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/49/IIIT_Sri_City_Logo.png/220px-IIIT_Sri_City_Logo.png" width="60"/>
+					<!-- <img src="http://uploads.webflow.com/5862ff0a48ddaea33e96e0ef/587523cda9cb9b0448b0f616_Logo.png" width="30" /> -->
+				</a>
+			</div>
+			<div id="freekohide" style="min-height: 120px;height:120px; line-height:120px; vertical-align: center; color: white; font-size:40px;overflow: hidden;">Freelancing Portal</div>
+			<div id="freekohideho" style="min-height: 120px;height:120px; line-height:120px;width: 25%; overflow: hidden;"></div>
+			<div style="float: right; display:flex;">
+				{% if request.user.is_authenticated %}
+				<!-- <div style="min-width: 80px; padding-left:20px; text-align:center; color: white;font-size:20px; line-height: 120px;vertical-align: center; display:flex;">
+					<a href="#" style="text-decoration:none;">
+						<div id="div1" class="fa" style="font-size:40px; color:#DC3D51; padding-top:40px;"></div>
+						<a>
+				</div>
+
+				<div style="min-width: 80px; min-height: 120px;height:120px; line-height: 120px;vertical-align: center;">
+					<div style="padding-top:20px;"></div>
+					<main rel="main" style="line-height: 120px;vertical-align: center;">
+						<div class="notification" style="display: inline-block;">
+							<a id="myHref" class="dropbtn" onclick="myFunction()" style="text-decoration:none;cursor: pointer;">
+								<svg viewbox="-10 0 35 35">
+									<path class="notification--bell" d="M14 12v1H0v-1l0.73-0.58c0.77-0.77 0.81-3.55 1.19-4.42 0.77-3.77 4.08-5 4.08-5 0-0.55 0.45-1 1-1s1 0.45 1 1c0 0 3.39 1.23 4.16 5 0.38 1.88 0.42 3.66 1.19 4.42l0.66 0.58z"></path>
+									<path class="notification--bellClapper" d="M7 15.7c1.11 0 2-0.89 2-2H5c0 1.11 0.89 2 2 2z"></path>
+								</svg>
+							</a>
+
+							<div id="myDropdown" class="dropdown-content">
+								<input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+								<a href="#about">About</a>
+								<a href="#base">Base</a>
+								<a href="#blog">Blog</a>
+								<a href="#about">About</a>
+								<a href="#base">Base</a>
+								<a href="#blog">Blog</a>
+							</div>
+						</div>
+					</main>
+
+				</div> -->
+				<div style="min-width: 80px; min-height: 120px;height:120px; line-height:120px;height: 100%;">
+					<div style="padding-top: 60px;">
+					<a href="{% url 'Portal:profile' request.user.username %}" style="text-decoration:none;">
+						<div class="profile-wrap">
+							<span class="haad"></span>
+							<span class="booy"></span>
+						</div>
+					</a>
+					</div>
+				</div>
+				<div style="min-width: 80px; padding-left: 20px; ">
+					<div style="padding-top: 40px;">
+						<a href="{% url 'Portal:logout' %}">
+							<svg version="1.1" id="lock" class="icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+							 x="0px" y="0px" width="40px" height="40px" viewBox="0 0 60 57.476" style="enable-background:new 0 0 60 57.476;" xml:space="preserve">
+								<rect x="9" y="21.441" class="st1" width="42.978" height="30.855" />
+								<circle class="st0" cx="31.074" cy="36.318" r="6.715" />
+								<path class="st2" d="M31.04,3.382c-9.967,0-18.045,8.079-18.045,18.045h36.09C49.085,11.461,41.006,3.382,31.04,3.382z" />
+							</svg>
+						</a>
+					</div>
+
+				</div>
+
+				{% endif %}
+			</div>
+			<div class="menu-button w-nav-button">
+				<div class="burger-menu w-icon-nav-menu"></div>
+			</div>
+		</div>
+	</div>
+
+	<p style=" display: block; margin: 5px 0;content:'';"></p>
+	<div class="navs" style="display: flex;padding-top: 0px; width: 100%;">
+
+		<div class="backbutton" style="display: absolute; left: 10px;line-height:inherit;vertical-align:center;padding-left: 10px;padding-top: 10px;" id='back'>
+			<i class="fa fa-arrow-circle-o-left" style="font-size:36px"></i>
+		</div>
+		<ul style="width: 70%;">
+			{% if not request.user.is_authenticated %}
+			<li>
+				<a href="{% url 'Portal:signup' %}">Signup</a>
+			</li>
+			<li>
+				<a href="{% url 'Portal:login' %}">Login</a>
+			</li>
+			{% endif %}
+			<li>
+				<a href="{% url 'Portal:browse_jobs' %}">Browse Jobs</a>
+			</li>
+			{% if request.user.is_authenticated %}
+			<li>
+				<a href="{% url 'Portal:post_project' %}">Post a Project</a>
+			</li>
+			<li>
+				<a href="{% url 'Portal:myprojects' %}">My Projects</a>
+			</li>
+			{% endif %}
+		</ul>
+	</div>
+
+	<div class="ou">
+
+
+		<div class="ouright">
+			<br>
+			<br>
+			<div class="situation">
+				<div class="currentWorkingStatus" style="">
+					<div id="appimg" style="overflow: hidden;  text-align: center; background-color: #213875; padding: 10px;">
+					<img id="lowa"src="/media/icons/give-money.png"></img>
+					</div><br>
+					<center>
+						<div class="styled-select">
+						<select name="credits" onchange="filter()">
+							<option value="Both" selected>Both type</option>
+							<option value="Paid">Paid</option>
+							<option value="Other">Other</option>
+						</select>
+						</div>
+					</center><br>
+
+				</div>
+				<br>
+				<div class="currentWorkingStatus">
+					<div id="appimg" style="overflow: hidden;  text-align: center; background-color: #213875; padding: 10px;">
+					<img id="lowa"src="/media/icons/java.png"></img>
+					</div>
+
+					<div class="prjt1" style="text-align: left;height: auto; max-height: 30vh; overflow-y: scroll;padding: 10px;">
+						{% for skill in skill_list %}
+						<input type="checkbox" onclick="filter()" name="skills[]" value="{{skill.skill_name}}" id="skill_{{skill.id}}">
+						<span style="padding-left:20px;">{{skill.skill_name}}</span>
+						<br>
+						{% endfor %}
+
+					</div>
+
+
+				</div>
+				<br>
+				<div class="currentWorkingStatus">
+					<div id="appimg" style="overflow: hidden; text-align: center; background-color: #213875; padding: 10px;">
+						<img id="lowa"src="/media/icons/translator.png"></img>
+					</div>
+
+					<div class="prjt2" style="text-align: left; height: auto; max-height: 30vh; overflow-y: scroll; padding: 10px;">
+						{% for language in language_list %}
+						<input type="checkbox" onclick="filter()" name="languages[]" value="{{language.language_name}}" id="language_{{language.id}}">
+						<span style="padding-left:20px;">{{language.language_name}}</span>
+						<br>
+						{% endfor %}
+					</div>
+
+				</div>
+
+			</div>
+
+
+		</div>
+
+		<div class="mid">
+		</div>
+
+		<div class="ouleft">
+			<br>
+			<div>
+				<h3>
+					<b>Jobs</b>
+				</h3>
+			</div>
+			<br>
+			<div class="projectContainer" id="jobs">
+
+				{% include 'jobs.html' %}
+
+			</div>
+		</div>
+
+	</div>
+
+
+
+
+</body>
+{% if skill_check %}
+	<script type="text/javascript">
+		var x="skill_"+{{skill_check}};
+		document.getElementById(x).checked=true;
+		filter();
+	</script>
+{% endif %}
+{% if language_check %}
+	<script type="text/javascript">
+		var y="language_"+{{language_check}};
+		console.log(y);
+		document.getElementById(y).checked=true;
+		filter();
+	</script>
+{% endif %}
+<script>
+
+	$('#back').click(function goBack() {
+		window.history.back();
+	});
+
+	function filter() {
+
+		var skills = []
+		$("input[name='skills[]']:checked").each(function () {
+			skills.push($(this).val());
+		});
+
+		var languages = $("input[name='languages[]']:checked").map(function () {
+			return this.value;
+		}).get();
+
+		var credits = $("select[name='credits']").val();
+
+		$.ajax({
+			type: "POST",
+			url: "{% url 'Portal:jobs_update' %}",
+			contentType: "application/json",
+			data: JSON.stringify({ 'skills': skills, 'languages': languages, 'credits': credits }),
+			success: function (data) {
+				$("#jobs").html(data);
+			}
+		});
+
+	}
+
+	function arraysEqual(arr1, arr2) {
+		if (arr1.length !== arr2.length)
+			return false;
+		for (var i = arr1.length; i--;) {
+			if (arr1[i] !== arr2[i])
+				return false;
+		}
+
+		return true;
+	}
+
+</script>
+{% if request.user.is_authenticated %}
+<!-- <script>
+	function ratestar() {
+		var a;
+		a = document.getElementById("div1");
+		a.innerHTML = "&#xf006;";
+		setTimeout(function () {
+			a.innerHTML = "&#xf123;";
+		}, 1000);
+		setTimeout(function () {
+			a.innerHTML = "&#xf005;";
+		}, 2000);
+	}
+	ratestar();
+	setInterval(ratestar, 3000);
+</script> -->
+{% endif %}
+
+<!-- <script>
+
+	function myFunction() {
+		document.getElementById("myDropdown").classList.toggle("show");
+	}
+
+	function filterFunction() {
+		var input, filter, ul, li, a, i;
+		input = document.getElementById("myInput");
+		filter = input.value.toUpperCase();
+		div = document.getElementById("myDropdown");
+		a = div.getElementsByTagName("a");
+		for (i = 0; i < a.length; i++) {
+			if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+				a[i].style.display = "";
+			} else {
+				a[i].style.display = "none";
+			}
+		}
+	}
+
+</script> -->
+
+</html>

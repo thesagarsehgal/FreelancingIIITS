@@ -1,0 +1,31 @@
+{% if jobs %}
+{% for job in jobs %}
+      <div class="proin">
+        <div class="inone">
+      <div style="color: #213875;">
+        <a href="{% url 'Portal:task_description' job.project.id job.id %}">{{job.task_name}}</a>
+      </div>
+
+      <div style="font-size:15px;color: black;">
+        A task from <div class="protag"><a style="text-decoration: none;" href="{%url 'Portal:project_description' job.project.id %}">{{job.project.project_name}}</a></div> Project
+      </div>
+
+      <div style="color: black;font-size:15px;">
+        Added On     {{job.addedOn}}
+      </div>
+    </div>
+
+    <div class="intwo">
+      <div class="inpt">
+        {% if job.credits == 'Paid' %}
+          {{job.amount}}
+        {% else %}
+         {{job.mention}}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endfor %}
+{% else %}
+<h3>No jobs available!!</h3>
+{% endif %}

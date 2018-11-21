@@ -1,0 +1,344 @@
+{% load staticfiles %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="/static/ase.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+          integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+          crossorigin="anonymous">
+
+
+
+    <title> Register</title>
+    <style>
+	    #first {
+	      width: 100px;
+	      height: 100px;
+	      background: red;
+	    }
+
+	    #first #second {
+	      width: 50%;
+	      height: 50%;
+	      background: green;
+	    }
+
+    </style>
+</head>
+
+<body>
+{% if error_message %}
+<b>{{error_message}}</b>
+<br> {% endif %}
+
+<div data-collapse="medium" data-animation="default" data-duration="400" class="navbar w-nav">
+    <div class="book">
+        <img src="http://uploads.webflow.com/5862ff0a48ddaea33e96e0ef/58630dd822584dd00564dd47_Book.png"
+             data-ix="book"/>
+    </div>
+    <div data-ix="cactus" class="cactus"></div>
+    <div class="content-wrapper w-container" style="display: flex;">
+
+        <div>
+            <a href="{% url 'Portal:home' %}" class="brand w-nav-brand">
+              	<img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/49/IIIT_Sri_City_Logo.png/220px-IIIT_Sri_City_Logo.png" width="60"/>
+                <!-- <img src="http://uploads.webflow.com/5862ff0a48ddaea33e96e0ef/587523cda9cb9b0448b0f616_Logo.png" -->
+                     <!-- width="30"/> -->
+            </a>
+        </div>
+        <div style="min-height: 120px;height:120px; line-height:120px; vertical-align: center; color: white; font-size:40px;">
+            Freelancing Portal
+        </div>
+        <div style="min-width: 650px;"></div>
+
+        <div class="menu-button w-nav-button">
+            <div class="burger-menu w-icon-nav-menu"></div>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<div style="width: 100%; display: flex; font-weight:normal; border: 0px;">
+    <div style="width: 225px;"></div>
+    <div class="card" style="width: 900px; border: 0px;">
+        <div class="card-header" style="font-weight:normal; ">
+            {% if student %}
+            <h4>Fill the remaining details</h4>
+            {% else %}
+            <h4>Sign Up</h4>
+            {% endif %}
+        </div>
+        <div class="card-body" style="padding-left: 0px;">
+            <form method="post" action="{% url 'Portal:signup' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div style="width: 900px; display: flex;">
+                    <div style="width: 44%">
+                        <div class="form-group">
+                            <label style="font-weight:normal;" for="username">Username</label>
+                            <input autofocus id="username" class="form-control " name="name" required
+                                   onchange="check_username() ">
+                            <div id="username_exist"></div>
+
+                        </div>
+                        <div class="form-group">
+                            <label style="font-weight:normal;" for="fname">First Name</label>
+                            <input class="form-control" id="fname" name="fname" value="{{student.Student_First_Name}}" required>
+                        </div>
+                        <div class="form-group">
+                            <label style="font-weight:normal;" for="lname">Last Name</label>
+                            <input class="form-control" name="lname" id="lname" value="{{student.Student_Last_name}}" required>
+                        </div>
+                        <div class="form-group">
+                            <label style="font-weight:normal;" for="email">Email</label>
+                            {% if student %}
+                            <input class="form-control" id="email" value="{{student.Student_Email}}" name="email" required>
+                            {% else %}
+                            <input class="form-control" id="email" name="email" required onchange="check_email()">
+                            {% endif %}
+                            <div id="email_exist"></div>
+                        </div>
+                        {% if not student %}
+                        <div class="form-group">
+                            <label for="passwd1" style="font-weight:normal;">Password</label>
+                            <input type="password" class="form-control" name="passwd1" id="passwd1" minlength="8"
+                                   required>
+                        </div>
+                        <div class="form-group">
+                            <label for="passwd2" style="font-weight:normal;">Re-enter Password</label>
+                            <input type="password" style="font-weight:normal;" class="form-control" id="passwd2"
+                                   name="passwd2" minlength="8" required
+                                   onchange="check_password()">
+                            <div id="password_match"></div>
+                        </div>
+                        {% endif %}
+
+                        <div class="form-group">
+                            <label style="font-weight:normal;">Phone No.</label>
+                            <input type="tel" min="0" name="phno" value="{{student.Student_Mobile}}" minlength="10" maxlength="11 " required>
+                        </div>
+                        <div class="form-group">
+                            <label style="font-weight:normal;" for="bio">Bio</label>
+                            <input class="form-control" id="bio" placeholder="write something about yourself" name="bio"
+                                   required>
+                        </div>
+
+                        <select name="batch" class="btn btn-secondary" data-toggle="dropdown">
+                            <option value="UG-1" style="padding-left: 10px;">UnderGraduate 1st year</option>
+                            <option value="UG-2" style="padding-left: 10px; ">UnderGraduate 2nd year</option>
+                            <option value="UG-3" style="padding-left: 10px; ">UnderGraduate 3rd year</option>
+                            <option value="UG-4" style="padding-left: 10px; ">UnderGraduate 4th year</option>
+                            <option value="MS" style="padding-left: 10px; ">MS</option>
+                            <option value="Ph.D" style="padding-left: 10px; ">Ph.D</option>
+                        </select>
+
+                        <select name="gender" class="btn btn-secondary " data-toggle="dropdown">
+                            {% if student %}
+                            {% if student.Student_Gender == 'M' %}
+                            <option value="Male" style="padding-left: 10px; " selected>Male</option>
+                            {% else %}
+                            <option value="Female" style="padding-left: 10px; " selected>Female</option>
+                            {% endif %}
+                            {% else %}
+                            <option value="Male" style="padding-left: 10px; " selected>Male</option>
+                            <option value="Female" style="padding-left: 10px; ">Female</option>
+                            {% endif %}
+                        </select>
+                        <br>
+                        <br>
+
+                    </div>
+
+
+                    <div style="width: 10%"></div>
+                    <div style="width: 45%">
+                        <div class="card" style=" border: 0px;">
+                            <table class="table table-striped" style="width: 100%; padding: 0px; border: 0px;">
+                                <tr style="width: 100%; padding: 0px; border: 0px;">
+                                    <td style="width: 100%; padding: 0px;">
+                                        <table style="width: 100%; padding: 0px; border: 0px;">
+                                            <thead class="thead-dark" style="width: 100%; padding: 0px;">
+                                            <tr style="width: 100%; padding: 0px;">
+                                                <th style="width: 55px; font-weight:normal;">#</th>
+                                                <th style="width: 132px; font-weight:normal; ">Skill</th>
+                                                <th style="font-weight:normal; ">Level</th>
+                                            </tr>
+                                            </thead>
+
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr style="width: 100%; padding: 0px;">
+                                    <td style="width: 100%; padding: 0px;">
+                                        <div style="overflow-y: scroll; width: 100%; height: 200px;">
+                                            <table style="width: 100%; padding: 0px;">
+                                                {% for skill in skill_list %}
+                                                <tr style="width: 100%; padding: 0px;">
+
+                                                    <td>{{ forloop.counter }}</td>
+                                                    <td>
+                                                        <input type="checkbox" name="skills[]"
+                                                               value="{{skill.skill_name}}">
+                                                        <span style="padding-left: 10px; "></span>{{skill.skill_name}}
+                                                    </td>
+                                                    <td>
+                                                        <select name="{{skill.skill_name}}" class="btn btn-secondary"
+                                                                data-toggle="dropdown ">
+                                                            <option value="1" style="padding-left: 10px; " selected>
+                                                                Beginner
+                                                            </option>
+                                                            <option value="2" style="padding-left: 10px; ">Intermediate
+                                                            </option>
+                                                            <option value="3" style="padding-left: 10px; ">Advance
+                                                            </option>
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                                {% endfor %}
+
+                                            </table>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <table class="table table-striped" style="width: 100%; padding: 0px; ">
+                                <tr style="width: 100%; padding: 0px; ">
+                                    <td style="width: 100%; padding: 0px; ">
+                                        <table style="width: 100%; padding: 0px; ">
+                                            <thead class="thead-dark" style="width: 100%; padding: 0px; ">
+                                            <tr style="width: 100%; padding: 0px; ">
+                                                <th style="width: 55px; font-weight:normal; ">#</th>
+                                                <th style="width: 145px; font-weight:normal; ">Languages</th>
+                                                <th style="font-weight:normal; ">Fluency</th>
+                                            </tr>
+                                            </thead>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr style="width: 100%; padding: 0px; ">
+                                    <td style="width: 100%; padding: 0px; ">
+                                        <div style="overflow-y: scroll; width: 100%; height: 200px; ">
+                                            <table style="width: 100%; padding: 0px; ">
+                                                {% for language in language_list %}
+                                                <tr style="width: 100%; padding: 0px; ">
+                                                    <td>{{ forloop.counter }}</td>
+                                                    <td>
+                                                        <input type="checkbox" name="languages[]"
+                                                               value="{{language.language_name}}">
+                                                        <span style="padding-left: 10px; "></span>{{language.language_name}}
+                                                    </td>
+                                                    <td>
+                                                        <select name="{{language.language_name}}"
+                                                                class="btn btn-secondary" data-toggle="dropdown ">
+                                                            <option value="1" style="padding-left: 10px; " selected>
+                                                                Good
+                                                            </option>
+                                                            <option value="2" style="padding-left: 10px; ">Very Good
+                                                            </option>
+                                                            <option value="3" style="padding-left: 10px; ">Excellent
+                                                            </option>
+                                                        </select>
+                                                </tr>
+                                                {% endfor %}
+                                            </table>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label style="font-weight:normal; " for="myFile">Upload Image</label>
+                            <br>
+                            <input type="file" id="myFile" name="image" required>
+                        </div>
+                    </div>
+                </div>
+                <input style="width: 900px; " type="submit" value="Register" class="btn btn-primary btn-block ">
+            </form>
+        </div>
+    </div>
+</div>
+<br>
+
+
+</body>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js " type="text/javascript"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script>
+
+	  $("input[name=username]").change(check_username());
+
+	  function check_username() {
+	    var username = $("input[name='name' ]").val();
+
+	    $.ajax({
+	      type: "POST",
+	      url: "{% url 'Portal:check_username' %}",
+	      contentType: "application/json",
+	      data: JSON.stringify({ 'username': username }),
+	      success: function (data) {
+	        $('#username_exist').html(data);
+	        if (data) {
+	          $("input[type=submit]").attr("disabled", "disabled");
+	        }
+	        else {
+	          $("input[type=submit]").removeAttr("disabled");
+	        }
+	      }
+	    });
+	  }
+
+	  function check_password() {
+	    var passwd1 = $("input[name='passwd1' ]").val();
+	    var passwd2 = $("input[name='passwd2' ]").val();
+
+
+	    if (passwd1 === passwd2) {
+	      $("input[type=submit]").removeAttr("disabled");
+	      $("#password_match").html('');
+	    }
+	    else {
+	      $("input[type=submit]").attr("disabled", "disabled");
+	      $("#password_match").html('Passwords don\'t match');
+
+	    }
+	  }
+
+	  function check_email() {
+	    var email = $("input[name='email' ]").val();
+
+	    $.ajax({
+	      type: "POST",
+	      url: "{% url 'Portal:check_email' %}",
+	      contentType: "application/json",
+	      data: JSON.stringify({ 'email': email }),
+	      success: function (data) {
+	        $('#email_exist').html(data);
+	        if (data) {
+	          $("input[type=submit]").attr("disabled", "disabled");
+	        }
+	        else {
+	          $("input[type=submit]").removeAttr("disabled");
+	        }
+	      }
+	    });
+	  }
+
+
+
+</script>
+
+</html>
