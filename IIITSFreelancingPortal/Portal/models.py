@@ -132,8 +132,8 @@ class UserRating(models.Model):
         CustomUser, related_name='rating_by', on_delete=models.CASCADE)
     fre = models.ForeignKey(
         CustomUser, related_name='rating_to', on_delete=models.CASCADE)
-    f_rating = models.DecimalField(default=0, max_digits=2, decimal_places=1)
-    e_rating = models.DecimalField(default=0, max_digits=2, decimal_places=1)
+    f_rating = models.DecimalField(default=-1, max_digits=2, decimal_places=1)
+    e_rating = models.DecimalField(default=-1, max_digits=2, decimal_places=1)
 
     def __str__(self):
         return str(self.task.id)+"--"+str(self.fre.user.username)+"--"+str(self.emp.user.username)

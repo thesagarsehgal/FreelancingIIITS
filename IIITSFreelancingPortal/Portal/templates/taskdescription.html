@@ -555,7 +555,9 @@
                     {% for i in skills_required %}
                     <a style="text-decoration: none;" href="{% url 'Portal:browse_jobs' %}?skill={{i.skill.id}}">
                         <input type="submit" value="{{i.skill.skill_name}}">
+
                     </a>
+                    <!-- <h1></h1> -->
                     {% endfor %}
                 </div>
             </div>
@@ -613,7 +615,7 @@
                     {% endif %}
 
                 {%endif%}
-                {% if user_rating.f_rating|add:0 == -1 %}
+                {% if not task.isCompleted %}
                 <div class="dead" style="text-align: center;background-color: white;margin: 5px;width: 100%">
                     <div id="appimg" style="overflow: hidden; text-align: center; background-color: #213875; padding: 10px;">
                         <img id="lowa"src="/media/icons/conversation.png"></img>
@@ -623,7 +625,7 @@
                 </a>
                 <br><br><br>
                 </div>
-                {%  endif  %}
+                {% endif %}
 
                 {% if user_rating.f_rating|add:0 == -1 %}
                 <div class="dead" style="text-align: center;background-color: white;margin: 5px;width: 100%">
@@ -776,9 +778,7 @@
 
                     <br>
 
-                {% endif %}
-                {% if task.isCompleted %}
-                {% if uurating.e_rating|add:0 == -1 %}
+                {% if user_rating.e_rating|add:0 == -1 %}
                     <div class="dead" style="text-align: center;background-color: white;margin: 5px;width: 100%">
                     <div id="appimg" style="overflow: hidden; text-align: center; background-color: #213875; padding: 10px;">
                         <img id="lowa"src="/media/icons/like.png"></img>
@@ -805,7 +805,7 @@
                     </form>
                 <br><br>
                 </div>
-                {%  endif  %}
+                {% endif %}
 <!------   done   --->
                 {% endif %}
 
@@ -845,6 +845,7 @@
                 </div>
 
             {% endif %}
+
 
         </div>
 
