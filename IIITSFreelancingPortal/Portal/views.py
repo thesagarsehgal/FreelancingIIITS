@@ -1,7 +1,7 @@
 import json
 import requests
 from django.contrib.auth import login, authenticate, logout
-from django.http import HttpResponseRedirect, HttpResponsePermanentRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, reverse, redirect
 from django.views.decorators.csrf import csrf_exempt
 from .models import *
@@ -19,7 +19,7 @@ def index(request):
     if not request.user.is_authenticated:
         return render(request, 'homepage.html')
     else:
-        return HttpResponsePermanentRedirect(reverse('Portal:home'))
+        return HttpResponseRedirect(reverse('Portal:home'))
 
 
 @csrf_exempt
@@ -88,8 +88,6 @@ def signup_user(request):
         cuser.save()
         for uskill in skills:
             skill = Skill.objects.get(skill_name=uskill)
-            skill.skill_name = uskill
-            skill.save()
             cuskill = UsersSkill()
             cuskill.skill = skill
             cuskill.user = cuser
@@ -98,8 +96,6 @@ def signup_user(request):
         for ulanguage in languages:
             language = CommunicationLanguage.objects.get(
                 language_name=ulanguage)
-            language.language_name = ulanguage
-            language.save()
             culanguage = UsersCommunicationLanguage()
             culanguage.language = language
             culanguage.user = cuser
@@ -107,7 +103,7 @@ def signup_user(request):
                 request.POST[language.language_name])
             culanguage.save()
         login(request, user)
-        return HttpResponsePermanentRedirect(reverse("Portal:home"))
+        return HttpResponseRedirect(reverse("Portal:home"))
     return render(request, 'signup.html', context)
 
 
@@ -177,9 +173,9 @@ def home(request):
         context['jobs_recommended'] = jobs_recommended
         return render(request, 'dashboard.html', context)
     elif request.user.is_superuser:
-        return HttpResponsePermanentRedirect(reverse('Portal:admin'))
+        return HttpResponseRedirect(reverse('Portal:admin'))
     else:
-        return HttpResponsePermanentRedirect(reverse('Portal:index'))
+        return HttpResponseRedirect(reverse('Portal:index'))
 
 
 def auth_callback_token(request, token):
@@ -219,7 +215,7 @@ def login_user(request):
             if request.COOKIES.get('post_project'):
                 return form_state(request, id=2)
             else:
-                return HttpResponsePermanentRedirect(reverse('Portal:home'))
+                return HttpResponseRedirect(reverse('Portal:home'))
         else:
             if request.COOKIES.get('post_project'):
                 context['post_project'] = 'post_project'
@@ -419,7 +415,7 @@ def add_task(request, project_id):
             if(task.credits=="Other"):
                 task.mention = request.POST['mention']
             elif(task.credits=="paid"):
-                task.amount = request.POST['amount']
+                task.amount = int(request.POST['amount'])
             task.deadline = request.POST['deadline']
             skills = request.POST.getlist('skills[]')
             languages = request.POST.getlist('languages[]')
@@ -626,8 +622,9 @@ def user_profile(request, username):
         if request.method == "POST":
             bio = request.POST['bio']
             cuser.bio = bio
-            image = request.FILES['image']
-            cuser.image = image
+            if request.FILES['image'] is not None:
+                image = request.FILES['image']
+                cuser.image = image
             cuser.save()
             skills = request.POST.getlist('skills[]')
             languages = request.POST.getlist('languages[]')
@@ -697,7 +694,7 @@ def task_editfunction(request, project_id, task_id):
             task.task_description = request.POST['description']
             task.credits = request.POST['credits']
             if task.credits == 'Paid':
-                task.amount = request.POST['amount']
+                task.amount = int(request.POST['amount'])
             else:    
                 task.mention = request.POST['mention']
             task.deadline = request.POST['deadline']

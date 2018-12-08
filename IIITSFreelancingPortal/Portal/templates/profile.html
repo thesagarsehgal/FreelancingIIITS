@@ -551,12 +551,12 @@
                 {% csrf_token %}
                 <label><h3 style="color: black; font-weight:normal">Tell us more about you</h3></label>
                 
-                <textarea style="width: 100%;" class="txt" autofocus id="message" name="bio" placeholder="Likh Le Kuch." tabindex="10"
+                <textarea style="width: 100%;" class="txt" autofocus id="message" name="bio" placeholder="Tell us something about yourself." tabindex="10"
                           required>{{cuser.bio}}</textarea> <br><br>
 
                 <div class="currentWorkingStatus" style="float:left; width: 50%">
                     <div id="appimg" style="overflow: hidden;  text-align: center; background-color: #213875; padding: 10px;">
-						<img id="lowa"src="/media/icons/java.png"></img>
+						<img id="lowa"src="/media/icons/java.png" />
 						</div>
 
                     <div class="prjt1" style="padding-left: 10px;text-align: left; height: 30vh; overflow-y: scroll;">
@@ -612,8 +612,8 @@
 				</div>
 				<br>
 				<b>Change your profile picture:</b><br>
-				<input type="file" id="myFile" name="image"><br>
-                <input type="submit" value="Save">
+				<input type="file" id="myFile" name="image" value=""><br>
+                <input type="submit" value="Save" name="submit">
             </form>
 
         </div>

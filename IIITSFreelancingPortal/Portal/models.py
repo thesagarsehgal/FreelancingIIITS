@@ -6,7 +6,7 @@ import os
 
 class CustomUser(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    phone_number = models.IntegerField(blank=False, default=None)
+    phone_number = models.CharField(max_length=11, default=None)
     bio = models.TextField(max_length=500, default=None)
     image = models.ImageField(upload_to='profiles/')
     batchYear = models.CharField(max_length=4, choices=(
@@ -76,11 +76,11 @@ class Task(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     credits = models.CharField(max_length=20, choices=(("Paid", "Paid"), ("Other", "Other")), blank=False,
                                default="Paid")
-    rating = models.DecimalField(default=-1, max_digits=2, decimal_places=1)
-    mention = models.CharField(max_length=200, default=None, null=True)
+    rating = models.DecimalField(default=0, max_digits=2, decimal_places=1)
+    mention = models.CharField(max_length=200, blank=True, null=True)
     amount = models.IntegerField(default=0)
     task_description = models.CharField(max_length=100, default=None)
-    task_link = models.URLField(default=None,blank=True,null=True)
+    task_link = models.URLField(default=None,blank=True)
     latest_submission_time = models.DateTimeField(blank=True, null=True)
     isCompleted = models.BooleanField(default=False)
     deadline = models.DateField(blank=False)
@@ -132,8 +132,8 @@ class UserRating(models.Model):
         CustomUser, related_name='rating_by', on_delete=models.CASCADE)
     fre = models.ForeignKey(
         CustomUser, related_name='rating_to', on_delete=models.CASCADE)
-    f_rating = models.DecimalField(default=-1, max_digits=2, decimal_places=1)
-    e_rating = models.DecimalField(default=-1, max_digits=2, decimal_places=1)
+    f_rating = models.DecimalField(default=0, max_digits=2, decimal_places=1)
+    e_rating = models.DecimalField(default=0, max_digits=2, decimal_places=1)
 
     def __str__(self):
         return str(self.task.id)+"--"+str(self.fre.user.username)+"--"+str(self.emp.user.username)

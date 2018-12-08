@@ -514,7 +514,7 @@
     <div class="tskheader">
            <div class="innDesc" style="text-align: center;background-color: white">
                 <div id="appimg" style="overflow: hidden; text-align: center; background-color: #213875; padding: 10px;">
-                        <img id="lowa"src="/media/icons/to-do.png"></img>
+                        <img id="lowa"src="/media/icons/to-do.png"/>
                 </div>
                 <p style="text-align: center;">Task Description</p>
                 <div class="desc">
@@ -524,7 +524,7 @@
 
             <div class="pta" style="text-align: center;background-color: white;margin: 5px;width: 25%">
                 <div id="appimg" style="overflow: hidden; text-align: center; background-color: #213875; padding: 10px;">
-                        <img id="lowa"src="/media/icons/deadline.png"></img>
+                        <img id="lowa"src="/media/icons/deadline.png"/>
                 </div>
                 Deadline
                 <br><span style="padding-left: 10px;"></span><p style="color: black;">{{task.deadline}}</p>
@@ -532,7 +532,7 @@
 
             <div class="dead" style="text-align: center;background-color: white;margin: 5px;width: 25%">
                 <div id="appimg" style="overflow: hidden; text-align: center; background-color: #213875; padding: 10px;">
-                        <img id="lowa"src="/media/icons/alarm-clock.png"></img>
+                        <img id="lowa"src="/media/icons/alarm-clock.png"/>
                 </div>
                 You are left with <br><br>
                 <div style="color: black;line-height: inherit; vertical-align: center;" id="deadTime" >
@@ -548,7 +548,7 @@
 
             <div style="text-align: center;background-color: white;margin: 5px;width: 50%">
                 <div id="appimg" style="overflow: hidden;  text-align: center; background-color: #213875; padding: 10px;">
-                            <img id="lowa"src="/media/icons/java.png"></img>
+                            <img id="lowa"src="/media/icons/java.png"/>
                 </div>
                 Skills
                 <div class="desc" style="width: 100%; padding: 15px; text-align: center;">
@@ -564,7 +564,7 @@
 
             <div style="text-align: center;background-color: white;margin: 5px;width: 50%">
                 <div id="appimg" style="overflow: hidden;  text-align: center; background-color: #213875; padding: 10px;">
-                        <img id="lowa"src="/media/icons/translator.png"></img>
+                        <img id="lowa"src="/media/icons/translator.png"/>
                 </div>
                 <div style="text-align: center;">
                     Language
@@ -587,7 +587,7 @@
                 {% ifnotequal task_rating -1 %}
                 <div class="dead" style="text-align: center;background-color: white;margin: 5px;width: 100%">
                         <div id="appimg" style="overflow: hidden; text-align: center; background-color: #213875; padding: 10px;">
-                            <img id="lowa"src="/media/icons/rating.png"></img>
+                            <img id="lowa"src="/media/icons/rating.png"/>
                         </div>
                     The task has a rating of {{task_rating}}.<br>
                 </div>
@@ -599,7 +599,7 @@
                     {% if user_rating.f_rating %}
                     <div class="dead" style="text-align: center;background-color: white;margin: 5px;width: 100%">
                         <div id="appimg" style="overflow: hidden; text-align: center; background-color: #213875; padding: 10px;">
-                            <img id="lowa"src="/media/icons/urating.png"></img>
+                            <img id="lowa"src="/media/icons/urating.png"/>
                         </div>
                         You gave a rating of {{user_rating.f_rating}}.<br>
                     </div>
@@ -608,7 +608,7 @@
                     {% if user_rating.e_rating %}
                     <div class="dead" style="text-align: center;background-color: white;margin: 5px;width: 100%">
                         <div id="appimg" style="overflow: hidden; text-align: center; background-color: #213875; padding: 10px;">
-                            <img id="lowa"src="/media/icons/like.png"></img>
+                            <img id="lowa"src="/media/icons/like.png"/>
                         </div>
                         You have got a rating of {{user_rating.e_rating}}.<br>
                     </div>
@@ -618,7 +618,7 @@
                 {% if not task.isCompleted %}
                 <div class="dead" style="text-align: center;background-color: white;margin: 5px;width: 100%">
                     <div id="appimg" style="overflow: hidden; text-align: center; background-color: #213875; padding: 10px;">
-                        <img id="lowa"src="/media/icons/conversation.png"></img>
+                        <img id="lowa"src="/media/icons/conversation.png"/>
                     </div><br>
                     <a style="text-decoration: none;" href="{% url 'Portal:applicants' task.id%}">
                     <input type="submit" value="Applicants">
@@ -630,7 +630,7 @@
                 {% if user_rating.f_rating|add:0 == -1 %}
                 <div class="dead" style="text-align: center;background-color: white;margin: 5px;width: 100%">
                     <div id="appimg" style="overflow: hidden; text-align: center; background-color: #213875; padding: 10px;">
-                        <img id="lowa"src="/media/icons/tools.png"></img>
+                        <img id="lowa"src="/media/icons/tools.png"/>
                     </div>
                     <br>
                         <a style="text-decoration: none;" href="{% url 'Portal:task_edit' task.project.id task.id %}">
@@ -645,7 +645,7 @@
                 {% if contributor %}
                     <div class="dead" style="text-align: center;background-color: white;margin: 5px;width: 100%">
                         <div id="appimg" style="overflow: hidden; text-align: center; background-color: #213875; padding: 10px;">
-                            <img id="lowa"src="/media/icons/operator.png"></img>
+                            <img id="lowa"src="/media/icons/operator.png"/>
                         </div>
                         <br>Contributor
                         <a href="{% url 'Portal:profile' contributor.user.user.username %}">{{contributor.user.user.username}}</a>
@@ -655,7 +655,7 @@
                 {% else %}
                 <div class="dead" style="text-align: center;background-color: white;margin: 5px;width: 100%">
                         <div id="appimg" style="overflow: hidden; text-align: center; background-color: #213875; padding: 10px;">
-                            <img id="lowa"src="/media/icons/operator.png"></img>
+                            <img id="lowa"src="/media/icons/operator.png"/>
                         </div>
                         <br>No Contributor
                         <br><br><br>
@@ -663,7 +663,7 @@
                 {% endif %}
                 <div class="dead" style="text-align: center;background-color: white;margin: 5px;width: 100%">
                         <div id="appimg" style="overflow: hidden; text-align: center; background-color: #213875; padding: 10px;">
-                            <img id="lowa"src="/media/icons/closed.png"></img>
+                            <img id="open_close_img" src="/media/icons/open.png" />
                         </div>
                         <br>
                         <input id="open_close" type="submit" name="status_update" value="" onclick="open_close()">
@@ -672,7 +672,7 @@
                 {% if not task.isCompleted and task.task_link %}
                     <div class="dead" style="text-align: center;background-color: white;margin: 5px;width: 100%">
                         <div id="appimg" style="overflow: hidden; text-align: center; background-color: #213875; padding: 10px;">
-                            <img id="lowa"src="/media/icons/code.png"></img>
+                            <img id="lowa"src="/media/icons/code.png"/>
                         </div><br>
                         <div class="protag">
                         <a style="text-decoration: none;" href="{{task.task_link}}">Task Link</a>
@@ -686,7 +686,7 @@
                 {% if user_rating.f_rating|add:0 == -1 %}
                 <div class="dead" style="text-align: center;background-color: white;margin: 5px;width: 100%">
                     <div id="appimg" style="overflow: hidden; text-align: center; background-color: #213875; padding: 10px;">
-                        <img id="lowa"src="/media/icons/urating.png"></img>
+                        <img id="lowa"src="/media/icons/urating.png"/>
                     </div>
                     <b>User Rating</b>
                     <br>
@@ -695,16 +695,10 @@
                         <input type="hidden" name="work" value="user_user_rating">
                         <input type="hidden" name="from" value="leader">
                         <select name="rating">
-                            <option value="0">0</option>
-                            <option value="0.5">0.5</option>
                             <option value="1">1</option>
-                            <option value="1.5">1.5</option>
                             <option value="2">2</option>
-                            <option value="2.5">2.5</option>
                             <option value="3">3</option>
-                            <option value="3.5">3.5</option>
                             <option value="4">4</option>
-                            <option value="4.5">4.5</option>
                             <option value="5">5</option>
                         </select>
                         <input type="submit" name="submit">
@@ -717,7 +711,7 @@
                     {% if user_rating.f_rating %}
                     <div class="dead" style="text-align: center;background-color: white;margin: 5px;width: 100%">
                         <div id="appimg" style="overflow: hidden; text-align: center; background-color: #213875; padding: 10px;">
-                            <img id="lowa"src="/media/icons/urating.png"></img>
+                            <img id="lowa"src="/media/icons/urating.png"/>
                         </div>
                         You have got a rating of {{user_rating.f_rating}}.<br><br>
                     </div>
@@ -725,7 +719,7 @@
                     {% if user_rating.e_rating %}
                     <div class="dead" style="text-align: center;background-color: white;margin: 5px;width: 100%">
                     <div id="appimg" style="overflow: hidden; text-align: center; background-color: #213875; padding: 10px;">
-                        <img id="lowa"src="/media/icons/like.png"></img>
+                        <img id="lowa"src="/media/icons/like.png"/>
                     </div>
                         You gave a rating of {{user_rating.e_rating}}.<br><br>
                     </div>
@@ -734,7 +728,7 @@
                 {% if not task.isCompleted %}
                 <div class="dead" style="text-align: center;background-color: white;margin: 5px;width: 100%">
                     <div id="appimg" style="overflow: hidden; text-align: center; background-color: #213875; padding: 10px;">
-                        <img id="lowa"src="/media/icons/code.png"></img>
+                        <img id="lowa"src="/media/icons/code.png"/>
                     </div><br>
                     <form method="POST">
                         {% csrf_token%}
@@ -750,7 +744,7 @@
                 {% if task.rating|add:0 == -1 %}
                 <div class="dead" style="text-align: center;background-color: white;margin: 5px;width: 100%">
                     <div id="appimg" style="overflow: hidden; text-align: center; background-color: #213875; padding: 10px;">
-                        <img id="lowa"src="/media/icons/rating.png"></img>
+                        <img id="lowa"src="/media/icons/rating.png"/>
                     </div>
                     Give the Task Rating
                     <form method="POST">
@@ -758,16 +752,10 @@
                         <input type="hidden" name="work" value="user_task_rating">
                         <input type="hidden" name="from" value="contributor">
                         <select name="rating">
-                            <option value="0">0</option>
-                            <option value="0.5">0.5</option>
                             <option value="1">1</option>
-                            <option value="1.5">1.5</option>
                             <option value="2">2</option>
-                            <option value="2.5">2.5</option>
                             <option value="3">3</option>
-                            <option value="3.5">3.5</option>
                             <option value="4">4</option>
-                            <option value="4.5">4.5</option>
                             <option value="5">5</option>
                         </select>
                         <input type="submit" name="submit">
@@ -781,7 +769,7 @@
                 {% if user_rating.e_rating|add:0 == -1 %}
                     <div class="dead" style="text-align: center;background-color: white;margin: 5px;width: 100%">
                     <div id="appimg" style="overflow: hidden; text-align: center; background-color: #213875; padding: 10px;">
-                        <img id="lowa"src="/media/icons/like.png"></img>
+                        <img id="lowa"src="/media/icons/like.png"/>
                     </div>
                     Give the Employer Rating
                     <form method="POST">
@@ -789,16 +777,10 @@
                         <input type="hidden" name="work" value="user_user_rating">
                         <input type="hidden" name="from" value="contributor">
                         <select name="rating">
-                            <option value="0">0</option>
-                            <option value="0.5">0.5</option>
                             <option value="1">1</option>
-                            <option value="1.5">1.5</option>
                             <option value="2">2</option>
-                            <option value="2.5">2.5</option>
                             <option value="3">3</option>
-                            <option value="3.5">3.5</option>
                             <option value="4">4</option>
-                            <option value="4.5">4.5</option>
                             <option value="5">5</option>
                         </select>
                         <input type="submit" name="submit">
@@ -814,7 +796,7 @@
 <!------   done   --->
                 <div class="dead" style="text-align: center;background-color: white;margin: 5px;width: 100%">
                     <div id="appimg" style="overflow: hidden; text-align: center; background-color: #213875; padding: 10px;">
-                        <img id="lowa"src="/media/icons/tick.png"></img>
+                        <img id="lowa"src="/media/icons/tick.png"/>
                     </div>
                     You have applied for the task<br><br><br>
                 </div>
@@ -823,7 +805,7 @@
 <!------   done   --->
                 <div class="dead" style="text-align: center;background-color: white;margin: 5px;width: 100%">
                     <div id="appimg" style="overflow: hidden; text-align: center; background-color: #213875; padding: 10px;">
-                        <img id="lowa"src="/media/icons/open.png"></img>
+                        <img id="lowa" src="/media/icons/open.png"/>
                     </div>
                     Open For Applicants<br><br>
                     <form method="POST" action="{% url 'Portal:task_description' task.project.id task.id %}">
@@ -837,7 +819,7 @@
 <!------   done   --->
                 <div class="dead" style="text-align: center;background-color: white;margin: 5px;width: 100%">
                     <div id="appimg" style="overflow: hidden; text-align: center; background-color: #213875; padding: 10px;">
-                        <img id="lowa"src="/media/icons/login.png"></img>
+                        <img id="lowa"src="/media/icons/login.png"/>
                     </div>
                     Open For Applicants! Login to apply.<br>
                     <div class="protag"><a style="text-decoration: none;" href="{% url 'Portal:login' %}">Login</a></div>
@@ -869,9 +851,11 @@
     console.log("{{task.isCompleted}}");
     if ("{{task.isCompleted}}" === "True") {
         btn.value = 'open';
+        $['#open_close_img'].attr("src", "/media/icons/closed.png");
     }
     else {
         btn.value = 'close';
+        $['#open_close_img'].attr("src", "/media/icons/open.png");
     }
     function open_close() {
         $.ajax({
@@ -884,9 +868,11 @@
 
                 if (data === "True") {
                     btn.value = "open";
+                    $['#open_close_img'].attr("src", "/media/icons/closed.png");
                 }
                 else {
                     btn.value = "close";
+                    $['#open_close_img'].attr("src", "/media/icons/open.png");
                 }
             }
         });
