@@ -1,4 +1,4 @@
-import json
+import simplejson as json
 import requests
 from django.contrib.auth import login, authenticate, logout
 from django.http import HttpResponseRedirect, HttpResponse
