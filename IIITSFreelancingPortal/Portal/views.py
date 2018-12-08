@@ -276,9 +276,9 @@ def jobs_update(request):
     context = dict()
     if request.user.is_authenticated:
         cuser = CustomUser.objects.get(user=request.user)
-        jobs = applicable_jobs(cuser)
-    else:
-        jobs = Task.objects.filter(isCompleted=False).order_by('-addedOn')
+    jobs = applicable_jobs(cuser)
+    # else:
+    #     jobs = Task.objects.filter(isCompleted=False).order_by('-addedOn')
     filtered_tasks = set()
     filtered_tasks_skills = set()
     filtered_tasks_languages = set()
@@ -324,11 +324,13 @@ def jobs_update(request):
                 filtered_tasks = filtered_tasks_skills.intersection(
                     filtered_tasks_languages, filtered_tasks_credits)
             elif skills_len > 0:
-                filtered_tasks = filtered_tasks_skills
+                filtered_tasks = filtered_tasks_skills.intersection(filtered_tasks_credits)
             else:
-                filtered_tasks = filtered_tasks_languages
+                filtered_tasks = filtered_tasks_languages.intersection(filtered_tasks_credits)
         jobs = filtered_tasks
+    print(filtered_tasks_skills, filtered_tasks_languages, filtered_tasks_credits)
     context['jobs'] = jobs
+    print(jobs)
     return render(request, 'jobs.html', context)
 
 
