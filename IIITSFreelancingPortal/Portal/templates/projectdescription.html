@@ -20,8 +20,6 @@
 	<script type="text/javascript">
 		WebFont.load({ google: { families: ["Open Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic", "Montserrat:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic"] } });
 	</script>
-	<!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" type="text/javascript"></script><![endif]-->
-
 	<script type="text/javascript">
 		!function (o, c) {
 			var n = c.documentElement, t = " w-mod-"; n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch")
@@ -485,24 +483,6 @@
 				<div style="min-width: 80px; min-height: 120px;height:120px; line-height: 120px;vertical-align: center;">
 					<div style="padding-top:20px;"></div>
 					<main rel="main" style="line-height: 120px;vertical-align: center;">
-						<!-- <div class="notification" style="display: inline-block;">
-							<a id="myHref" class="dropbtn" onclick="myFunction()" style="text-decoration:none;cursor: pointer;">
-								<svg viewbox="-10 0 35 35">
-									<path class="notification--bell" d="M14 12v1H0v-1l0.73-0.58c0.77-0.77 0.81-3.55 1.19-4.42 0.77-3.77 4.08-5 4.08-5 0-0.55 0.45-1 1-1s1 0.45 1 1c0 0 3.39 1.23 4.16 5 0.38 1.88 0.42 3.66 1.19 4.42l0.66 0.58z"></path>
-									<path class="notification--bellClapper" d="M7 15.7c1.11 0 2-0.89 2-2H5c0 1.11 0.89 2 2 2z"></path>
-								</svg>
-							</a>
-
-							<div id="myDropdown" class="dropdown-content">
-								<input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-								<a href="#about">About</a>
-								<a href="#base">Base</a>
-								<a href="#blog">Blog</a>
-								<a href="#about">About</a>
-								<a href="#base">Base</a>
-								<a href="#blog">Blog</a>
-							</div>
-						</div> -->
 					</main>
 
 				</div>
@@ -574,7 +554,7 @@
 			<div class="prjtDesc" style="border-spacing: 5px;">
 				<div style="font-size: 25px; width: 75%; background-color: white; margin: 5px">
 					<div id="appimg" style="overflow: hidden; text-align: center; background-color: #213875; padding: 10px;">
-						<img id="lowa"src="/media/icons/summary.png">
+						<img id="lowa"src="/media/icons/summary.png"/>
 					</div>	
 					<p style="font-size: 25px;text-align: center;">Project Description</p>
 					<div class="desc" style="padding: 10px;width: 100%">
@@ -585,7 +565,7 @@
 
 					<div style="text-align: center;background-color: white;margin: 5px;width: 30%">
 						<div id="appimg" style="overflow: hidden; text-align: center; background-color: #213875; padding: 10px;">
-							<img id="lowa"src="/media/icons/calendar.png">
+							<img id="lowa"src="/media/icons/calendar.png"/>
 						</div>
 						Posted On
 						<br> <span style="padding-left: 10px;"></span><p style="color: black;">{{project.postedOn}}</p>
@@ -593,19 +573,15 @@
 
 					<div style="text-align: center;background-color: white;margin: 5px;width: 30%">
 						<div id="appimg" style="overflow: hidden; text-align: center; background-color: #213875; padding: 10px;">
-						<img id="lowa"src="/media/icons/deadline.png">
+						<img id="lowa"src="/media/icons/deadline.png"/>
 						</div>
 						Deadline
 						<br><span style="padding-left: 10px;"></span><p style="color: black;">{{project.deadline}}</p>
 					</div>
 
 					<br>
-					<div class="dead"style="font-color: fb7a74;">
-						<div id="appimg" style="overflow: hidden; text-align: center; background-color: #213875; padding: 10px;">
-						<img id="lowa"src="/media/icons/alarm-clock.png">
-						</div>
-						You are left with <br><br>
-						<div style="color: black;line-height: inherit; vertical-align: center;" id="deadTime" >
+					<div class="dead"style="font-color: fb7a74;"><div id="appimg" style="overflow: hidden; text-align: center; background-color: #213875; padding: 10px;">
+						<img id="lowa"src="/media/icons/alarm-clock.png"/>
 						</div>
 					</div>
 				</div>
@@ -699,44 +675,4 @@
 		}
 	}, 1000);
 </script>
-
-<!-- <script>
-	function ratestar() {
-		var a;
-		a = document.getElementById("div1");
-		a.innerHTML = "&#xf006;";
-		setTimeout(function () {
-			a.innerHTML = "&#xf123;";
-		}, 1000);
-		setTimeout(function () {
-			a.innerHTML = "&#xf005;";
-		}, 2000);
-	}
-	ratestar();
-	setInterval(ratestar, 3000);
-</script>
-
-<script>
-
-	function myFunction() {
-		document.getElementById("myDropdown").classList.toggle("show");
-	}
-
-	function filterFunction() {
-		var input, filter, ul, li, a, i;
-		input = document.getElementById("myInput");
-		filter = input.value.toUpperCase();
-		div = document.getElementById("myDropdown");
-		a = div.getElementsByTagName("a");
-		for (i = 0; i < a.length; i++) {
-			if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
-				a[i].style.display = "";
-			} else {
-				a[i].style.display = "none";
-			}
-		}
-	}
-
-</script> -->
-
 </html>
