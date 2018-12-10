@@ -447,43 +447,12 @@
 			<div>
 				<a href="{% url 'Portal:home' %}" class="brand w-nav-brand">
 						<img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/49/IIIT_Sri_City_Logo.png/220px-IIIT_Sri_City_Logo.png" width="60"/>
-					<!-- <img src="http://uploads.webflow.com/5862ff0a48ddaea33e96e0ef/587523cda9cb9b0448b0f616_Logo.png" width="30" /> -->
 				</a>
 			</div>
 			<div id="freekohide" style="min-height: 120px;height:120px; line-height:120px; vertical-align: center; color: white; font-size:40px;overflow: hidden;">Freelancing Portal</div>
 			<div id="freekohideho" style="min-height: 120px;height:120px; line-height:120px;width: 25%; overflow: hidden;"></div>
 			<div style="float: right; display:flex;">
 				{% if request.user.is_authenticated %}
-				{% comment %} <div style="min-width: 80px; padding-left:20px; text-align:center; color: white;font-size:20px; line-height: 120px;vertical-align: center; display:flex;">
-					<a href="#" style="text-decoration:none;">
-						<div id="div1" class="fa" style="font-size:40px; color:#DC3D51; padding-top:40px;"></div>
-						<a>
-				</div>
-
-				<div style="min-width: 80px; min-height: 120px;height:120px; line-height: 120px;vertical-align: center;">
-					<div style="padding-top:20px;"></div>
-					<main rel="main" style="line-height: 120px;vertical-align: center;">
-						<div class="notification" style="display: inline-block;">
-							<a id="myHref" class="dropbtn" onclick="myFunction()" style="text-decoration:none;cursor: pointer;">
-								<svg viewbox="-10 0 35 35">
-									<path class="notification--bell" d="M14 12v1H0v-1l0.73-0.58c0.77-0.77 0.81-3.55 1.19-4.42 0.77-3.77 4.08-5 4.08-5 0-0.55 0.45-1 1-1s1 0.45 1 1c0 0 3.39 1.23 4.16 5 0.38 1.88 0.42 3.66 1.19 4.42l0.66 0.58z"></path>
-									<path class="notification--bellClapper" d="M7 15.7c1.11 0 2-0.89 2-2H5c0 1.11 0.89 2 2 2z"></path>
-								</svg>
-							</a>
-
-							<div id="myDropdown" class="dropdown-content">
-								<input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-								<a href="#about">About</a>
-								<a href="#base">Base</a>
-								<a href="#blog">Blog</a>
-								<a href="#about">About</a>
-								<a href="#base">Base</a>
-								<a href="#blog">Blog</a>
-							</div>
-						</div>
-					</main>
-
-				</div> {% endcomment %}
 				<div style="min-width: 80px; min-height: 120px;height:120px; line-height:120px;height: 100%;">
 						<div style="padding-top: 60px;">
 					<a href="{% url 'Portal:profile' request.user.username%}" style="text-decoration:none;">
@@ -563,9 +532,9 @@
 
 					<div class="proin">
 						<div class="inone">
-							  <div style="color: #213875;">
-								<a href="{% url 'Portal:project_description' job.id %}">{{job.project_name}}</a>
-							  </div>
+							<div style="color: #213875;">
+							<a href="{% url 'Portal:project_description' job.id %}">{{job.project_name}}</a>
+							</div>
 							<div style="color: black;font-size:15px;">
 								Added On    {{job.postedOn}}
 							</div>
@@ -599,7 +568,12 @@
 					<div class="proin">
 						<div class="inone">
 							  <div style="color: #213875;">
-								<a href="{% url 'Portal:task_description' job.project.id job.id %}">{{job.task_name}}</a>
+								<a href="{% url 'Portal:task_description' job.project.id job.id %}">{{job.task_name}}</a>&emsp;
+								{% ifequal request.user.username job.project.leader.user.username %}
+									<b>Leader</b>
+								{% else %}
+									<b>Working</b>
+								{% endifequal %}
 							  </div>
 
 							  <div style="color: #213875;font-size:15px;">
@@ -640,6 +614,12 @@
 						<div class="inone">
 							  <div style="color: #213875;">
 								<a href="{% url 'Portal:task_description' job.project.id job.id %}">{{job.task_name}}</a>
+								&emsp;
+								{% ifequal request.user.username job.project.leader.user.username %}
+									<b>Leader</b>
+								{% else %}
+									<b>Working</b>
+								{% endifequal %}
 							  </div>
 
 							  <div style="color: #213875;font-size:15px;">
@@ -681,44 +661,5 @@
 		});
 
 </script>
-
-{% comment %} <script>
-	function ratestar() {
-		var a;
-		a = document.getElementById("div1");
-		a.innerHTML = "&#xf006;";
-		setTimeout(function () {
-			a.innerHTML = "&#xf123;";
-		}, 1000);
-		setTimeout(function () {
-			a.innerHTML = "&#xf005;";
-		}, 2000);
-	}
-	ratestar();
-	setInterval(ratestar, 3000);
-</script>
-
-<script>
-
-	function myFunction() {
-		document.getElementById("myDropdown").classList.toggle("show");
-	}
-
-	function filterFunction() {
-		var input, filter, ul, li, a, i;
-		input = document.getElementById("myInput");
-		filter = input.value.toUpperCase();
-		div = document.getElementById("myDropdown");
-		a = div.getElementsByTagName("a");
-		for (i = 0; i < a.length; i++) {
-			if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
-				a[i].style.display = "";
-			} else {
-				a[i].style.display = "none";
-			}
-		}
-	}
-
-</script> {% endcomment %}
 
 </html>

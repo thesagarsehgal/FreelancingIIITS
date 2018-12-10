@@ -447,7 +447,7 @@ def add_task(request, project_id):
             task.credits = request.POST['credits']
             if(task.credits=="Other"):
                 task.mention = request.POST['mention']
-            elif(task.credits=="paid"):
+            elif(task.credits=="Paid"):
                 task.amount = int(request.POST['amount'])
             task.deadline = request.POST['deadline']
             skills = request.POST.getlist('skills[]')
@@ -618,8 +618,6 @@ def task_description(request, project_id, task_id):
             context['has_applied'] = True
     if request.method == 'POST':
         if request.user.is_authenticated:
-            # if request.POST["work"] == "submit_task_review":
-            #     submit_task_review(request, task)
             if request.POST["work"] == "submit_task":
                 submit_task(request, task)
             elif request.POST["work"] == "status_update":
@@ -661,7 +659,7 @@ def user_profile(request, username):
         if request.method == "POST":
             bio = request.POST['bio']
             cuser.bio = bio
-            if request.FILES['image'] is not None:
+            if request.FILES.get('image', None) is not None:
                 image = request.FILES['image']
                 cuser.image = image
             cuser.save()
@@ -681,6 +679,7 @@ def user_profile(request, username):
                 ulanguage = UsersCommunicationLanguage(language=languagereq, user=cuser,
                                                        level_of_fluency=int(request.POST[language]))
                 ulanguage.save()
+            return HttpResponseRedirect(reverse('Portal:profile', args=(username,)))
     skills = UsersSkill.objects.filter(user=cuser)
     languages = UsersCommunicationLanguage.objects.filter(user=cuser)
     context['uskills'] = [obj.skill.skill_name for obj in skills]

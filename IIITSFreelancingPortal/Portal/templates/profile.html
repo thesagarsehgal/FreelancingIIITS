@@ -485,6 +485,7 @@
 		{% endif %}
 		<br>
 		<b>Employer:</b>
+		{% if frating %}
 		<div class="ratin">
 			{% for i in erating.0 %}
 			<span class="fa fa-star checked"></span>
@@ -493,6 +494,11 @@
 			<span class="fa fa-star"></span>
 			{% endfor %}
 		</div>
+		{% else %}
+		<br>
+		Not rated yet
+		{% endif %}
+		<br>
 	</div>
 	{% if not request.user.is_authenticated %}
 	<div class="mid" style="width:40%;"><br>
@@ -542,7 +548,7 @@
     <div class="ouright" style="border: 1px solid #E8E8E8; ">
        
     	<div id="appimg" style="overflow: hidden;  text-align: center; background-color: #213875; padding: 10px;">
-						<img id="lowa"src="/media/icons/user.png"></img>
+						<img id="lowa"src="/media/icons/user.png"/>
 						</div>
 
         <div class="situation">
@@ -585,7 +591,7 @@
 
                 <div class="currentWorkingStatus">
                     <div id="appimg" style="overflow: hidden; text-align: center; background-color: #213875; padding: 10px;">
-						<img id="lowa"src="/media/icons/translator.png"></img>
+						<img id="lowa"src="/media/icons/translator.png"/>
 					</div>
 
                     <div class="prjt2" style="padding-left: 10px;text-align: left; height: 30vh; overflow-y: scroll;">
@@ -649,44 +655,4 @@
     }
 
 </script>
-
-<!-- <script>
-
-		function ratestar() {
-			var a;
-			a = document.getElementById("div1");
-			a.innerHTML = "&#xf006;";
-			setTimeout(function () {
-				a.innerHTML = "&#xf123;";
-			}, 1000);
-			setTimeout(function () {
-				a.innerHTML = "&#xf005;";
-			}, 2000);
-		}
-		ratestar();
-		setInterval(ratestar, 3000);
-
-	function myFunction() {
-		document.getElementById("myDropdown").classList.toggle("show");
-	}
-
-	function filterFunction() {
-		var input, filter, ul, li, a, i;
-		input = document.getElementById("myInput");
-		filter = input.value.toUpperCase();
-		div = document.getElementById("myDropdown");
-		a = div.getElementsByTagName("a");
-		for (i = 0; i < a.length; i++) {
-			if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
-				a[i].style.display = "";
-			} else {
-				a[i].style.display = "none";
-			}
-		}
-	}
-
-
-
-</script> -->
-
 </html>
