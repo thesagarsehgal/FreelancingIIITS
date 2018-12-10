@@ -657,6 +657,7 @@
 				<a style=" text-decoration: none;"href="{% url 'Portal:profile' project.leader.user.username %}"><span style="color :#213875">{{project.leader}}</span></a>
 
 				{% if is_leader and not project.isCompleted %}
+				<script type="text/javascript">console.log("i am here")</script>
 				<a style="text-decoration: none;" href="{% url 'Portal:add_task' project.id %}">
 					<input type="button" value="Add Task">
 				</a>

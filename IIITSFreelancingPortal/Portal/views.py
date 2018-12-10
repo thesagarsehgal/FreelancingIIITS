@@ -10,6 +10,12 @@ from datetime import datetime
 
 from django.db import connection
 
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.base import MIMEBase
+from email import encoders
+
 url =  'http://10.0.80.133:3000/oauth/getDetails'
 #url = 'https://serene-wildwood-35121.herokuapp.com/oauth/changeUr/'
 clientSecret = "445b354949599afbcc454441543297a9a827b477dd3eb78d1cdd478f1482b5da08f9b6c3496e650783927e03b20e716483d5b9085143467804a5c6d40933282f"
@@ -57,6 +63,26 @@ def open_close_project(request):
     task.save()
     return HttpResponse(str(task.isCompleted))
 
+def send_simple_message(reciever,subject,text):
+    print(">>",reciever)
+    print(">>",subject)
+    print(">>",text)
+    fromaddr = "freelancingportaliiits@gmail.com"
+    toaddr = reciever
+    msg = MIMEMultipart()
+
+    msg['From'] = fromaddr
+    msg['To'] = toaddr
+    msg['Subject'] = subject
+    body = text
+    msg.attach(MIMEText(body, 'plain'))
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.starttls()
+    server.login(fromaddr, "freelancingportal")
+    text = msg.as_string()
+    x=server.sendmail(fromaddr, toaddr, text)
+    print(x,"sent mail")
+    server.quit()
 
 def signup_user(request):
     context = dict()
@@ -525,13 +551,16 @@ def select_user(request, task, context):
             contributor.user = CustomUser.objects.get(user=int(user_id))
             contributor.task = Task.objects.get(id=task.id)
             contributor.save()
-            notification = Notification()
-            notification._from = CustomUser.objects.get(
-                user=int(request.user.id))
-            notification._to = CustomUser.objects.get(user=int(user_id))
-            notification.message = "You have been selected for the task " + \
-                str(contributor.task.task_name)
-            notification.save()
+            send_simple_message(str(contributor.user.user.email),"Selection for the Task"+str(),"You have been selected for the task "+str(contributor.task.task_name)+" of project "+str(contributor.task.project.project_name)+"\n\n -"+str(contributor.task.project.leader.user.username)) 
+            for i in context['applicants']:
+                send_simple_message(str(i.user.user.email),"Non-Selection for the Task"+str(),"You have not been selected for the task "+str(contributor.task.task_name)+" of project "+str(contributor.task.project.project_name)+"\n\n -"+str(contributor.task.project.leader.user.username))     
+            # notification = Notification()
+            # notification._from = CustomUser.objects.get(
+            #     user=int(request.user.id))
+            # notification._to = CustomUser.objects.get(user=int(user_id))
+            # notification.message = "You have been selected for the task " + \
+            #     str(contributor.task.task_name)
+            # notification.save()
         else:
             print("we already have a contributor")
     else:
