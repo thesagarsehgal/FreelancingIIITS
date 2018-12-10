@@ -477,18 +477,24 @@
     </div>
 
     <br>
-    <div style="text-align:center; font-size:40px; width: 100%">
-                {{task.task_name}}
+    <div style="text-align:center;font-size:40px; width: 100%">
+        {{task.task_name}}
+        <div style="font-size: 15px">
+            <!-- Project:-  -->
+            <a href="{% url 'Portal:project_description' task.project.id%}">{{task.project.project_name}}</a>
+        </div>        
     </div>
-    <br>
+    <br><br>    
     <div class="tskheader">
-           <div class="innDesc" style="text-align: center;background-color: white">
+            <div class="innDesc" style="text-align: center;background-color: white">
                 <div id="appimg" style="overflow: hidden; text-align: center; background-color: #213875; padding: 10px;">
                         <img id="lowa"src="/media/icons/to-do.png"/>
                 </div>
-                <p style="text-align: center;">Task Description</p>
-                <div class="desc">
-                    {{task.task_description}}
+                <!-- <p style="text-align: center;">Task Description</p> -->
+                Task Description
+                <br><br>
+                <div style="color: black;line-height: inherit; vertical-align: center;">
+                    <center>{{task.task_description}}</center>
                 </div>
             </div>
 
@@ -508,10 +514,20 @@
                 <div style="color: black;line-height: inherit; vertical-align: center;" id="deadTime" >
                 </div>
             </div>
+            <div class="dead" style="text-align: center;background-color: white;margin: 5px;width: 25%">
+                <div id="appimg" style="overflow: hidden; text-align: center; background-color: #213875; padding: 10px;">
+                        <img id="lowa"src="/media/icons/give-money.png"/>
+                </div>
+                Credit <br><br>
+                <div style="color: black;line-height: inherit; vertical-align: center;">
+                    {% if task.credits == 'Paid' %}
+                        Rs. {{task.amount}}
+                    {% else %}
+                        {{task.mention}}
+                    {% endif %}
+                </div>
+            </div>
 
-    </div>
-    <div></div>
-        Project:- <a href="{% url 'Portal:project_description' task.project.id%}">{{task.project.project_name}}</a>
     </div>
     <div class="ou">
         <div class="prjtDesc">
@@ -590,7 +606,7 @@
                         <img id="lowa"src="/media/icons/conversation.png"/>
                     </div><br>
                     <a style="text-decoration: none;" href="{% url 'Portal:applicants' task.id%}">
-                    <input type="submit" value="Applicants">
+                    <div><input type="submit" value="Applicants"></div><br>
                 </a>
                 <br><br><br>
                 </div>

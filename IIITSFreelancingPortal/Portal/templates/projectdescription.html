@@ -315,7 +315,7 @@
 
 		.inpt {
 			position: relative;
-			top: 40%;
+			/*top: 10%;*/
 		}
 
 		.usar {
@@ -578,7 +578,7 @@
 					</div>	
 					<p style="font-size: 25px;text-align: center;">Project Description</p>
 					<div class="desc" style="padding: 10px;width: 100%">
-						{{project.description}}
+						<center>{{project.description}}</center>
 					</div>
 				</div>
 				<div class="innDesc" style="padding: 0px;">
@@ -640,10 +640,11 @@
 								<div class="intwo">
 									<div class="inpt">
 										{% if job.credits == 'Paid' %}
-											{{job.amount}}
+											Rs. {{job.amount}}
 										{% else %}
 											{{job.mention}}
 										{% endif %}
+										
 									</div>
 								</div>
 							  </div>
