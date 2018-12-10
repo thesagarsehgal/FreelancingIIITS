@@ -432,6 +432,12 @@ def project_description(request, project_id):
     context = dict()
     context['project'] = project
     context['added_tasks'] = added_tasks
+    year = project.deadline.strftime("%Y")
+    month = project.deadline.strftime("%m")
+    date = project.deadline.strftime("%d")
+    context['year'] = year
+    context['month'] = month
+    context['date'] = date
     if request.user.is_authenticated:
         context['is_leader'] = (project.leader.user == request.user)
     return render(request, 'projectdescription.html', context)
@@ -593,6 +599,12 @@ def task_description(request, project_id, task_id):
             task.isCompleted = True
             task.save()
     context = dict()
+    year = task.deadline.strftime("%Y")
+    month = task.deadline.strftime("%m")
+    date = task.deadline.strftime("%d")
+    context['year'] = year
+    context['month'] = month
+    context['date'] = date
     if(request.user.is_authenticated):
         cuser=CustomUser.objects.get(user=request.user)
     context['task'] = task
