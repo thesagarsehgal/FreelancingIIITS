@@ -80,7 +80,7 @@ class Task(models.Model):
     mention = models.CharField(max_length=200, blank=True, null=True)
     amount = models.IntegerField(default=0)
     task_description = models.CharField(max_length=100, default=None)
-    task_link = models.URLField(default=None,blank=True)
+    task_link = models.URLField(blank=True)
     latest_submission_time = models.DateTimeField(blank=True, null=True)
     isCompleted = models.BooleanField(default=False)
     deadline = models.DateField(blank=False)

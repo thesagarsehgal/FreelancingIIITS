@@ -274,6 +274,7 @@ def jobs_update(request):
     languages = data['languages']
     credits = data['credits']
     context = dict()
+    cuser = None
     if request.user.is_authenticated:
         cuser = CustomUser.objects.get(user=request.user)
     jobs = applicable_jobs(cuser)
@@ -397,6 +398,10 @@ def post_project(request):
 
 def project_description(request, project_id):
     project = Project.objects.get(id=project_id)
+    if not project.isCompleted:
+        if project.deadline < datetime.now().date():
+            project.isCompleted = True
+            project.save()
     added_tasks = Task.objects.filter(project=project.id)
     context = dict()
     context['project'] = project
@@ -555,6 +560,10 @@ def applicants(request, task_id):
 
 def task_description(request, project_id, task_id):
     task = Task.objects.get(id=task_id, project=project_id)
+    if not task.isCompleted:
+        if task.deadline < datetime.now().date():
+            task.isCompleted = True
+            task.save()
     context = dict()
     if(request.user.is_authenticated):
         cuser=CustomUser.objects.get(user=request.user)

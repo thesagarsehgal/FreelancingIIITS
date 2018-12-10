@@ -518,7 +518,7 @@
 				</div>
 				<div style="min-width: 80px; padding-left: 20px; ">
 					<div style="padding-top: 40px;">
-						<a href="{% url 'Portal:logout' %}" target="_blank">
+						<a href="{% url 'Portal:logout' %}">
 							<svg version="1.1" id="lock" class="icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
 							 x="0px" y="0px" width="40px" height="40px" viewBox="0 0 60 57.476" style="enable-background:new 0 0 60 57.476;" xml:space="preserve">
 								<rect x="9" y="21.441" class="st1" width="42.978" height="30.855" />
@@ -656,7 +656,7 @@
 				Posted by
 				<a style=" text-decoration: none;"href="{% url 'Portal:profile' project.leader.user.username %}"><span style="color :#213875">{{project.leader}}</span></a>
 
-				{% if is_leader %}
+				{% if is_leader and not project.isCompleted %}
 				<a style="text-decoration: none;" href="{% url 'Portal:add_task' project.id %}">
 					<input type="button" value="Add Task">
 				</a>
