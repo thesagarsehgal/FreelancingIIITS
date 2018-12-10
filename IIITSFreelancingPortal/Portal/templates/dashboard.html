@@ -496,7 +496,7 @@
 				</div>
 				<div style="min-width: 80px; padding-left: 20px; ">
 					<div style="padding-top: 40px;">
-						<a href="{% url 'Portal:logout' %}">
+						<a href="{% url 'Portal:logout' %}" onclick="noBack()">
 							<svg version="1.1" id="lock" class="icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
 							 x="0px" y="0px" width="40px" height="40px" viewBox="0 0 60 57.476" style="enable-background:new 0 0 60 57.476;" xml:space="preserve">
 								<rect x="9" y="21.441" class="st1" width="42.978" height="30.855" />
@@ -663,47 +663,10 @@
 
 </script>
 
-<!-- <script>
-
-	function ratestar() {
-		var a;
-		a = document.getElementById("div1");
-		a.innerHTML = "&#xf006;";
-		setTimeout(function () {
-			a.innerHTML = "&#xf123;";
-		}, 1000);
-		setTimeout(function () {
-			a.innerHTML = "&#xf005;";
-		}, 2000);
-	}
-	ratestar();
-	setInterval(ratestar, 3000);
-
-	function myFunction() {
-		document.getElementById("myDropdown").classList.toggle("show");
-	}
-
-	function filterFunction() {
-		var input, filter, ul, li, a, i;
-		input = document.getElementById("myInput");
-		filter = input.value.toUpperCase();
-		div = document.getElementById("myDropdown");
-		a = div.getElementsByTagName("a");
-		for (i = 0; i < a.length; i++) {
-			if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
-				a[i].style.display = "";
-			} else {
-				a[i].style.display = "none";
-			}
-		}
-	}
-
-
-
-
-
-
-
-</script> -->
+{% comment %} <script type="text/javascript">
+	function preventBack() { window.history.forward(); }
+	setTimeout("preventBack()", 0);
+	window.onunload = function () { null };
+</script> {% endcomment %}
 
 </html>

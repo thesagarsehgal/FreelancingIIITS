@@ -464,7 +464,6 @@ def add_task(request, project_id):
     context['language_list'] = language_list
     return render(request, "addtask.html", context)
 
-
 def submit_task(request, task):
     submit_url = request.POST.get("work_link",None)
     if(submit_url!=None):
