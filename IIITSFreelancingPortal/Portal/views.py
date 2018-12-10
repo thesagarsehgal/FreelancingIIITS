@@ -1,4 +1,4 @@
-import simplejson as json
+import json
 import requests
 from django.contrib.auth import login, authenticate, logout
 from django.http import HttpResponseRedirect, HttpResponse
@@ -10,8 +10,8 @@ from datetime import datetime
 
 from django.db import connection
 
-#url =  'http://10.0.80.133:3000/oauth/getDetails'
-url = 'https://serene-wildwood-35121.herokuapp.com/oauth/changeUr/'
+url =  'http://10.0.80.133:3000/oauth/getDetails'
+#url = 'https://serene-wildwood-35121.herokuapp.com/oauth/changeUr/'
 clientSecret = "445b354949599afbcc454441543297a9a827b477dd3eb78d1cdd478f1482b5da08f9b6c3496e650783927e03b20e716483d5b9085143467804a5c6d40933282f"
 
 # Create your views here.
