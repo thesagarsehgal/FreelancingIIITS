@@ -435,7 +435,7 @@
             <b>Phone No.</b><span style="padding-left:15px; color: black;">{{cuser.phone_number}}</span>
         </div>
 		<br>
-		<b>Rating</b><br>
+		{% comment %} <b>Rating</b><br>
 		<b>Freelancer:</b>
 		{% if frating %}
 		<div class="ratin">
@@ -464,7 +464,7 @@
 		{% else %}
 		<br>
 		Not rated yet
-		{% endif %}
+		{% endif %} {% endcomment %}
 		<br>
 	</div>
 	{% if not request.user.is_authenticated %}

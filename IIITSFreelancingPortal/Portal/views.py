@@ -535,8 +535,8 @@ def user_user_rating(request,task,context):
     except:
         uurating=UserRating()
     uurating.task=task
-    uurating.fre=task.project.leader
-    uurating.emp=Contributor.objects.get(task=task).user
+    uurating.fre=Contributor.objects.get(task=task).user
+    uurating.emp=task.project.leader
     if(context["is_contributor"]):
         uurating.e_rating=request.POST.get("rating",None)
     elif(context["is_leader"]):
@@ -559,14 +559,8 @@ def select_user(request, task, context):
             contributor.save()
             send_simple_message(str(contributor.user.user.email),"Selection for the Task"+str(),"You have been selected for the task "+str(contributor.task.task_name)+" of project "+str(contributor.task.project.project_name)+"\n\n -"+str(contributor.task.project.leader.user.username)) 
             for i in context['applicants']:
-                send_simple_message(str(i.user.user.email),"Non-Selection for the Task"+str(),"You have not been selected for the task "+str(contributor.task.task_name)+" of project "+str(contributor.task.project.project_name)+"\n\n -"+str(contributor.task.project.leader.user.username))     
-            # notification = Notification()
-            # notification._from = CustomUser.objects.get(
-            #     user=int(request.user.id))
-            # notification._to = CustomUser.objects.get(user=int(user_id))
-            # notification.message = "You have been selected for the task " + \
-            #     str(contributor.task.task_name)
-            # notification.save()
+                if i.user!=contributor.user:
+                    send_simple_message(str(i.user.user.email),"Non-Selection for the Task"+str(),"You have not been selected for the task "+str(contributor.task.task_name)+" of project "+str(contributor.task.project.project_name)+"\n\n -"+str(contributor.task.project.leader.user.username))
         else:
             print("we already have a contributor")
     else:
@@ -605,8 +599,15 @@ def task_description(request, project_id, task_id):
     context['year'] = year
     context['month'] = month
     context['date'] = date
-    if(request.user.is_authenticated):
-        cuser=CustomUser.objects.get(user=request.user)
+    # if(request.user.is_authenticated):
+    #     cuser=CustomUser.objects.get(user=request.user)
+    #     if task.isCompleted:
+    #         try:
+    #             taskuserrating = UserRating.get(task=task)
+    #             context["user_rating"]=taskuserrating
+    #         except:
+    #             taskuserrating = UserRating(task=task, emp=task.project.leader, fre=)
+    #             context["user_rating"]= 
     context['task'] = task
     context['is_leader'] = (task.project.leader.user == request.user)
     context['applicants'] = task.applicant_set.all()
@@ -615,10 +616,6 @@ def task_description(request, project_id, task_id):
     context['skills_required'] = task.taskskillsrequired_set.all()
     context['languages_required']=task.tasklanguagesrequired_set.all()
     context['task_rating'] = task.rating
-    try:
-        context["user_rating"]=task.userrating
-    except:
-        print("------------------\nNo user rating object for the task yet\n----------------------")
     try:
         context['contributor'] = task.contributor_set.get()
         context['is_contributor'] = (context['contributor'].user.user == request.user)
@@ -640,7 +637,7 @@ def task_description(request, project_id, task_id):
             elif request.POST["work"] == "user_task_rating":
                 user_task_rating(request, task)
             elif request.POST["work"] == "user_user_rating":
-                user_user_rating(request, task,context)
+                user_user_rating(request, task, context)
             elif request.POST["work"] == "start_working":
                 start_end_working(request, task, )
         return redirect("Portal:task_description", project_id, task_id)

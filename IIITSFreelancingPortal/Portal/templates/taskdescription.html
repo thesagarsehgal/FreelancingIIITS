@@ -5,7 +5,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>index</title>
+    <title>Task Description</title>
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta content="Webflow" name="generator" />
 
@@ -577,7 +577,7 @@
             {% endif%}
 
             {% if is_leader %}
-                {% if task.isCompleted %}
+                {% comment %} {% if task.isCompleted %}
                     {% if user_rating.f_rating %}
                     <div class="dead" style="text-align: center;background-color: white;margin: 5px;width: 100%">
                         <div id="appimg" style="overflow: hidden; text-align: center; background-color: #213875; padding: 10px;">
@@ -596,7 +596,7 @@
                     </div>
                     {% endif %}
 
-                {%endif%}
+                {%endif%} {% endcomment %}
                 {% if not task.isCompleted %}
                 <div class="dead" style="text-align: center;background-color: white;margin: 5px;width: 100%">
                     <div id="appimg" style="overflow: hidden; text-align: center; background-color: #213875; padding: 10px;">
@@ -661,8 +661,8 @@
 
                 {% endif %}
 
-                {%if task.isCompleted %}
-                {% if user_rating.f_rating|add:0 == -1 %}
+                {% comment %} {%if task.isCompleted %}
+                {% if not user_rating.f_rating %}
                 <div class="dead" style="text-align: center;background-color: white;margin: 5px;width: 100%">
                     <div id="appimg" style="overflow: hidden; text-align: center; background-color: #213875; padding: 10px;">
                         <img id="lowa"src="/media/icons/urating.png"/>
@@ -684,9 +684,9 @@
                     </form><br><br>
                 </div>
                 {% endif %}
-                {% endif %}
+                {% endif %} {% endcomment %}
             {% elif is_contributor %}
-                {% if task.isCompleted %}
+                {% comment %} {% if task.isCompleted %}
                     {% if user_rating.f_rating %}
                     <div class="dead" style="text-align: center;background-color: white;margin: 5px;width: 100%">
                         <div id="appimg" style="overflow: hidden; text-align: center; background-color: #213875; padding: 10px;">
@@ -703,7 +703,7 @@
                         You gave a rating of {{user_rating.e_rating}}.<br><br>
                     </div>
                     {% endif %}
-                {% endif %}
+                {% endif %} {% endcomment %}
                 {% if not task.isCompleted %}
                 <div class="dead" style="text-align: center;background-color: white;margin: 5px;width: 100%">
                     <div id="appimg" style="overflow: hidden; text-align: center; background-color: #213875; padding: 10px;">
@@ -719,7 +719,7 @@
                 </div>
                 {% endif %}
                 {% if task.isCompleted %}
-                {% if task.rating|add:0 == -1 %}
+                {% ifequal task.rating 0 %}
                 <div class="dead" style="text-align: center;background-color: white;margin: 5px;width: 100%">
                     <div id="appimg" style="overflow: hidden; text-align: center; background-color: #213875; padding: 10px;">
                         <img id="lowa"src="/media/icons/rating.png"/>
@@ -740,11 +740,11 @@
                     </form>
                 <br><br>
                 </div>
-                {%  endif  %}
+                {%  endifequal  %}
 
                     <br>
 
-                {% if user_rating.e_rating|add:0 == -1 %}
+                {% comment %} {% if not user_rating.e_rating %}
                     <div class="dead" style="text-align: center;background-color: white;margin: 5px;width: 100%">
                     <div id="appimg" style="overflow: hidden; text-align: center; background-color: #213875; padding: 10px;">
                         <img id="lowa"src="/media/icons/like.png"/>
@@ -765,7 +765,7 @@
                     </form>
                 <br><br>
                 </div>
-                {% endif %}
+                {% endif %} {% endcomment %}
                 {% endif %}
             {% elif has_applied%}
                 <div class="dead" style="text-align: center;background-color: white;margin: 5px;width: 100%">
@@ -814,6 +814,8 @@
 {% if is_leader %}
 <script type="text/javascript">
 
+    console.log({{user_rating}})
+
     $('#back').click(function goBack() {
 		window.history.back();
 	});
@@ -823,11 +825,11 @@
     console.log("{{task.isCompleted}}");
     if ("{{task.isCompleted}}" === "True") {
         btn.value = 'open';
-        $['#open_close_img'].attr("src", "/media/icons/closed.png");
+        document.getElementById('open_close_img').src="/media/icons/closed.png";
     }
     else {
         btn.value = 'close';
-        $['#open_close_img'].attr("src", "/media/icons/open.png");
+        document.getElementById('open_close_img').src="/media/icons/open.png";
     }
     function open_close() {
         $.ajax({
@@ -840,11 +842,13 @@
 
                 if (data === "True") {
                     btn.value = "open";
-                    $['#open_close_img'].attr("src", "/media/icons/closed.png");
+                    document.getElementById('open_close_img').src="/media/icons/closed.png";
+                    console.log('closing');
                 }
                 else {
                     btn.value = "close";
-                    $['#open_close_img'].attr("src", "/media/icons/open.png");
+                    document.getElementById('open_close_img').src="/media/icons/open.png";
+                    console.log('opening');
                 }
             }
         });

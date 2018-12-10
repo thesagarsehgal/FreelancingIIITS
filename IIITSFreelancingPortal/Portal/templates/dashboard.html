@@ -279,7 +279,7 @@
 
 		.inpt {
 			position: relative;
-			top: 40%;
+			top: 0%;
 		}
 
 		.usar {
@@ -597,10 +597,10 @@
 						Current Working Project Status
 					</div>
 					<div class="protag" style="text-align: center;">
-						{{current_working_task.project.project_name}}
+						<a style="text-decoration: none;" href="{% url 'Portal:project_description' current_working_task.project.id %}">{{current_working_task.project.project_name}}</a>
 					</div>
-					<div class="td2" style="text-align: center;">
-						{{current_working_task.task_name}}
+					<div class="protag" style="text-align: center;">
+						<a style="text-decoration: none;" href="{% url 'Portal:task_description' current_working_task.project.id  current_working_task.id %}">{{current_working_task.task_name}}</a>
 					</div>
 					<br><br>{% else %}
 					<div class="cwps2" style="text-align: center;">
