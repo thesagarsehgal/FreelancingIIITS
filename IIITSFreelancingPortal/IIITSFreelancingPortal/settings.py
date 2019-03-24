@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '2^adjpbk_eq&as+*5cys3d9htah)ajjx@@up444f^+7g-!#p47'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -76,13 +76,17 @@ WSGI_APPLICATION = 'IIITSFreelancingPortal.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'FreelancingPortal',
+    #     'USER': 'Aakash_97',
+    #     'PASSWORD': 'Light97isawesome',
+    #     'HOST': 'aakashdbinstance.cdgcb2d25ikg.ap-south-1.rds.amazonaws.com',
+    #     'PORT': '3306',
+    # }
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'FreelancingPortal',
-        'USER': 'Aakash_97',
-        'PASSWORD': 'Light97isawesome',
-        'HOST': 'aakashdbinstance.cdgcb2d25ikg.ap-south-1.rds.amazonaws.com',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'freelancing_portal',
     }
 }
 

@@ -255,42 +255,47 @@ def logout_user(request):
     return HttpResponseRedirect(reverse('Portal:index'))
 
 
-# def applicable_jobs(cuser):
-#     if not cuser:
-#         projects = Project.objects.all()
-#     else:
-#         projects = Project.objects.exclude(leader=cuser)
-
-#     jobs = set()
-#     if projects:
-#         for project in projects:
-#             if not project.isCompleted:
-#                 tasks = Task.objects.filter(
-#                         project=project, isCompleted=False)
-#                 for task in tasks:
-#                     if task.contributor_set.count() == 0:
-#                         jobs.add(task)
-#     if jobs:
-#         print(jobs)
-#         sorted(jobs, key=lambda x: x.addedOn, reverse=True)
-#     return jobs
-
-
 def applicable_jobs(cuser):
-    cur = connection.cursor()
+    '''
+    Use this function when using sqlclient database
+    '''
     if not cuser:
-        id=0
+        projects = Project.objects.all()
     else:
-        id=cuser.id
-    cur.callproc('applicable_jobs', [id])
-    results = cur.fetchall()
-    cur.close()
+        projects = Project.objects.exclude(leader=cuser)
 
-    jobs = [Task(*row) for row in results]
+    jobs = set()
+    if projects:
+        for project in projects:
+            if not project.isCompleted:
+                tasks = Task.objects.filter(
+                        project=project, isCompleted=False)
+                for task in tasks:
+                    if task.contributor_set.count() == 0:
+                        jobs.add(task)
     if jobs:
-        jobs = [Task.objects.get(id=job.id) for job in jobs]
+        print(jobs)
         sorted(jobs, key=lambda x: x.addedOn, reverse=True)
     return jobs
+
+
+# def applicable_jobs(cuser):
+#     '''
+#     Use this function when using MySQL as a database
+#     '''
+#     cur = connection.cursor()
+#     if not cuser:
+#         id=0
+#     else:
+#         id=cuser.id
+#     cur.callproc('applicable_jobs', [id])
+#     results = cur.fetchall()
+#     cur.close()
+#     jobs = [Task(*row) for row in results]
+#     if jobs:
+#         jobs = [Task.objects.get(id=job.id) for job in jobs]
+#         sorted(jobs, key=lambda x: x.addedOn, reverse=True)
+#     return jobs
 
 
 @csrf_exempt
