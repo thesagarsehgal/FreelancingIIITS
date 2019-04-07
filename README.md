@@ -1,6 +1,6 @@
 # Freelancing Portal
 
-This project was a part of Applied Software Engineering(ASE) course.
+This group project was a part of Applied Software Engineering(ASE) course.
 
 This project is a web portal built using Django to connect Freelancer to the
 employers (people who want to get the work done). 
