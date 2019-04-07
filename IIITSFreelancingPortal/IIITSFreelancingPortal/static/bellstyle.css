@@ -1,0 +1,80 @@
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 120px;
+  line-height: 120px;
+  position: relative;
+}
+main .notification {
+	display: flex;
+  position: relative;
+  justify-content: center;
+  width: 5em;
+  height: 5em;
+  min-height: 5em;
+  line-height: 5em;
+  text-align: center;
+  vertical-align:center;
+}
+main .notification svg {
+	display: flex;
+  width: 5em;
+  height: 5em;
+  line-height: 5em;
+  vertical-align:center;
+}
+main .notification svg > path {
+  fill: #DC3D51;
+}
+main .notification--bell {
+  animation: bell 2.2s linear infinite;
+  transform-origin: 50% 0%;
+}
+main .notification--bellClapper {
+  animation: bellClapper 2.2s 0.1s linear infinite;
+}
+
+@keyframes bell {
+  0%, 25%, 75%, 100% {
+    transform: rotate(0deg);
+  }
+  40% {
+    transform: rotate(10deg);
+  }
+  45% {
+    transform: rotate(-10deg);
+  }
+  55% {
+    transform: rotate(8deg);
+  }
+  60% {
+    transform: rotate(-8deg);
+  }
+}
+@keyframes bellClapper {
+  0%, 25%, 75%, 100% {
+    transform: translateX(0);
+  }
+  40% {
+    transform: translateX(-0.15em);
+  }
+  45% {
+    transform: translateX(0.15em);
+  }
+  55% {
+    transform: translateX(-0.1em);
+  }
+  60% {
+    transform: translateX(0.1em);
+  }
+}
+@keyframes notification {
+  0%, 25%, 75%, 100% {
+    opacity: 1;
+  }
+  30%, 70% {
+    opacity: 0;
+  }
+}

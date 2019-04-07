@@ -30,7 +30,7 @@ def index(request):
 
 @csrf_exempt
 def check_username(request):
-    data = json.loads(request.body)
+    data = json.loads(request.body.decode('utf-8'))
     username = data['username']
     try:
         user = User.objects.get(username=username)
@@ -42,7 +42,7 @@ def check_username(request):
 
 @csrf_exempt
 def check_email(request):
-    data = json.loads(request.body)
+    data = json.loads(request.body.decode('utf-8'))
     email = data['email']
     if email.endswith('@iiits.in'):
         return HttpResponse('<b>Login with iiits link.</b>')
@@ -55,7 +55,7 @@ def check_email(request):
 
 @csrf_exempt
 def open_close_project(request):
-    data = json.loads(request.body)
+    data = json.loads(request.body.decode('utf-8'))
     tid = data["task_id"]
     current_state = data["current"]
     task = Task.objects.get(id=tid)
@@ -210,7 +210,7 @@ def auth_callback_token(request, token):
         'secret': clientSecret
     }
     response = requests.post(url, payload)
-    content = json.loads(response.content)
+    content = json.loads(response.content.decode('utf-8'))
     student = content['student'][0]
     email = student['Student_Email']
     try:
@@ -300,7 +300,7 @@ def applicable_jobs(cuser):
 
 @csrf_exempt
 def jobs_update(request):
-    data = json.loads(request.body)
+    data = json.loads(request.body.decode('utf-8'))
     skills = data['skills']
     languages = data['languages']
     credits = data['credits']
